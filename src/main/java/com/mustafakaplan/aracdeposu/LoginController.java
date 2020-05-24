@@ -1,4 +1,4 @@
-package com.mustafakaplan.notalma;
+package com.mustafakaplan.aracdeposu;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mustafakaplan.entity.Note;
-import com.mustafakaplan.entity.User;
+import com.mustafakaplan.entity.Notes;
+import com.mustafakaplan.entity.Users;
 import com.mustafakaplan.service.UserService;
 
 @Controller
@@ -68,9 +68,9 @@ public class LoginController
 	}
 	
 	@RequestMapping(value = "/controlUser", method = RequestMethod.POST)
-	public ResponseEntity<String> controlUser(@RequestBody User user, HttpServletRequest request)
+	public ResponseEntity<String> controlUser(@RequestBody Users user, HttpServletRequest request)
 	{
-		User user2 = userService.getFindByUsernameAndPass(user);
+		Users user2 = userService.getFindByUsernameAndPass(user);
 		
 		if(user2 != null)
 		{
@@ -83,7 +83,7 @@ public class LoginController
 	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ResponseEntity<String> addUser(@RequestBody User user, HttpServletRequest request)
+	public ResponseEntity<String> addUser(@RequestBody Users user, HttpServletRequest request)
 	{
 		int status = control(user);
 		
@@ -100,7 +100,7 @@ public class LoginController
 		return new ResponseEntity<>("ERROR", HttpStatus.CREATED);
 	}
 	
-	private int control(User user)
+	private int control(Users user)
 	{
 		if(!user.getPass2().matches(user.getPassword()))
 		{

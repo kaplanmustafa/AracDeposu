@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mustafakaplan.dao.NoteDAO;
 import com.mustafakaplan.dto.UserLoginDTO;
-import com.mustafakaplan.entity.Note;
-import com.mustafakaplan.entity.User;
+import com.mustafakaplan.entity.Notes;
+import com.mustafakaplan.entity.Users;
 import com.mustafakaplan.security.LoginFilter;
 
 @Service
@@ -25,47 +25,47 @@ public class NoteService
 	@Autowired
 	private NoteDAO noteDao;
 	
-	public Long createNote(Note note, HttpServletRequest request)
+	public Long createNote(Notes note, HttpServletRequest request)
 	{
 		note.setUser_id(LoginFilter.user.getId());
 		return noteDao.insert(note);
 	}
 	
-	public Long updateNote(Note note, HttpServletRequest request)
+	public Long updateNote(Notes note, HttpServletRequest request)
 	{
 		noteDao.update(note);
 		return 1l;
 	}
 	
 
-	public Long deleteNote(Note note, HttpServletRequest request)
+	public Long deleteNote(Notes note, HttpServletRequest request)
 	{
 		noteDao.delete(note);
 		return 1l;
 	}
 	
-	public ArrayList<Note> getAll()
+	public ArrayList<Notes> getAll()
 	{
 		return noteDao.getAll();
 	}
 	
-	public ArrayList<Note> getAll(Long userId)
+	public ArrayList<Notes> getAll(Long userId)
 	{
 		return noteDao.getAll(userId);
 	}
 	
-	public Note getFindByNoteId(Long noteId)
+	public Notes getFindByNoteId(Long noteId)
 	{
 		return noteDao.getFindByNoteId(noteId);
 	}
 	
-	public ArrayList<Note> getAll(UserLoginDTO login)
+	public ArrayList<Notes> getAll(UserLoginDTO login)
 	{
-		User user2 = new User();
+		Users user2 = new Users();
 		user2.setUsername(login.getUsername());
 		user2.setPassword(login.getPassword());
 		
-		User user = userService.getFindByUsernameAndPass(user2);
+		Users user = userService.getFindByUsernameAndPass(user2);
 		
 		return noteDao.getAll(user.getId());
 	}

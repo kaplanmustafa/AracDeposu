@@ -11,15 +11,15 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="kullanicilar")
-public class User 
+public class Users 
 {	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable = false)
 	private String username;
+	
 	private String name;
 	private String surname;
 	private String email;

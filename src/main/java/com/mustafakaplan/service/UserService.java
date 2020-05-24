@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mustafakaplan.dao.UserDAO;
-import com.mustafakaplan.entity.User;
+import com.mustafakaplan.entity.Users;
 
 @Service
 @Transactional
@@ -25,7 +25,7 @@ public class UserService
 	
 	// CRUD
 	
-	public Long insert(User user)
+	public Long insert(Users user)
 	{
 		String uuid = UUID.randomUUID().toString();
 		user.setKeyreg(uuid);;
@@ -38,24 +38,24 @@ public class UserService
 		return 1l;
 	}
 	
-	public void update(User user)
+	public void update(Users user)
 	{
 		userDAO.update(user);;
 	}
 	
-	public User getFindByUsernameAndPass(User user)
+	public Users getFindByUsernameAndPass(Users user)
 	{
 		return userDAO.getFindByUsernameAndPass(user.getUsername(), user.getPassword());
 	}
 	
-	public User getFindByUsername(String username)
+	public Users getFindByUsername(String username)
 	{
 		return userDAO.getFindByUsername(username);
 	}
 	
 	public boolean getFindByKey(String key)
 	{
-		User user = userDAO.getFindByKey(key);
+		Users user = userDAO.getFindByKey(key);
 		
 		if(user != null)
 		{

@@ -5,7 +5,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.mustafakaplan.notalma.HomeController;
+import com.mustafakaplan.aracdeposu.HomeController;
 
 @Service
 public class MailService 

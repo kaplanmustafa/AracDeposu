@@ -1,4 +1,4 @@
-package com.mustafakaplan.notalma;
+package com.mustafakaplan.aracdeposu;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mustafakaplan.entity.Note;
+import com.mustafakaplan.entity.Notes;
 import com.mustafakaplan.security.LoginFilter;
 import com.mustafakaplan.service.MailService;
 import com.mustafakaplan.service.NoteService;
@@ -23,7 +23,7 @@ import com.mustafakaplan.service.NoteService;
 @Controller
 public class HomeController 
 {
-	public static String url = "http://localhost:8085/notalma";
+	public static String url = "http://localhost:8085/aracdeposu";
 	
 	@Autowired
 	private NoteService noteService;
@@ -48,7 +48,7 @@ public class HomeController
 		System.out.println("HOME CONTROL");
 		model.addAttribute("user", request.getSession().getAttribute("user"));
 		
-		model.addAttribute("baslik", "Not Alma");
+		model.addAttribute("baslik", "Araç Deposu");
 		model.addAttribute("serverTime","/"  ); 
 		
 		return "index";
@@ -77,7 +77,7 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/addNote", method = RequestMethod.POST)
-	public ResponseEntity<String> addNote(@RequestBody Note note, HttpServletRequest request)
+	public ResponseEntity<String> addNote(@RequestBody Notes note, HttpServletRequest request)
 	{
 		noteService.createNote(note, request);
 		
@@ -85,9 +85,9 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/updateNote", method = RequestMethod.POST)
-	public ResponseEntity<String> updateNote(@RequestBody Note note, HttpServletRequest request)
+	public ResponseEntity<String> updateNote(@RequestBody Notes note, HttpServletRequest request)
 	{
-		Note oldNote = noteService.getFindByNoteId(note.getId());
+		Notes oldNote = noteService.getFindByNoteId(note.getId());
 		oldNote.setContent(note.getContent());
 		oldNote.setTitle(note.getTitle());
 		
@@ -97,9 +97,9 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/deleteNote", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteNote(@RequestBody Note note, HttpServletRequest request)
+	public ResponseEntity<String> deleteNote(@RequestBody Notes note, HttpServletRequest request)
 	{
-		Note oldNote = noteService.getFindByNoteId(note.getId());
+		Notes oldNote = noteService.getFindByNoteId(note.getId());
 		
 		noteService.deleteNote(oldNote, request);
 		
@@ -107,15 +107,15 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/getNotes", method = RequestMethod.POST)
-	public ResponseEntity<ArrayList<Note>> getNotes(HttpServletRequest request)
+	public ResponseEntity<ArrayList<Notes>> getNotes(HttpServletRequest request)
 	{
 		return new ResponseEntity<>(noteService.getAll(LoginFilter.user.getId()), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/getNote", method = RequestMethod.POST)
-	public ResponseEntity<Note> getNote(@RequestBody String id, HttpServletRequest request)
+	public ResponseEntity<Notes> getNote(@RequestBody String id, HttpServletRequest request)
 	{
-		Note note = noteService.getFindByNoteId(Long.parseLong(id));
+		Notes note = noteService.getFindByNoteId(Long.parseLong(id));
 		
 		if(note.getUser_id().equals(LoginFilter.user.getId()))
 		{

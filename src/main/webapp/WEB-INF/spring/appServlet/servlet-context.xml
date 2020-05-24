@@ -44,9 +44,8 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 	
-	<beans:bean id="noteService" class="com.mustafakaplan.service.NoteService">
+	<beans:bean id="noteService" class="com.mustafakaplan.service.NoteService" />
 	
-	</beans:bean>
 	
 	<beans:bean id="noteDao" class="com.mustafakaplan.dao.NoteDAO">
 	</beans:bean>

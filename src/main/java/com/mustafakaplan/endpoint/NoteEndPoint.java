@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mustafakaplan.dto.UserLoginDTO;
-import com.mustafakaplan.entity.Note;
+import com.mustafakaplan.entity.Notes;
 import com.mustafakaplan.service.NoteService;
 
 @RestController
@@ -22,7 +22,7 @@ public class NoteEndPoint
 	private NoteService noteService;
 	
 	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
-	public ResponseEntity<ArrayList<Note>> getNotes(@RequestBody UserLoginDTO login)
+	public ResponseEntity<ArrayList<Notes>> getNotes(@RequestBody UserLoginDTO login)
 	{
 		return new ResponseEntity<>(noteService.getAll(login),HttpStatus.OK);
 	}

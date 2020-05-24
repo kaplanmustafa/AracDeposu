@@ -7,7 +7,7 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mustafakaplan.entity.Note;
+import com.mustafakaplan.entity.Notes;
 
 public class NoteDAO 
 {
@@ -16,46 +16,46 @@ public class NoteDAO
 	
 	// CRUD
 	
-	public Long insert(Note note)
+	public Long insert(Notes note)
 	{
 		return (Long) sessionFactory.getCurrentSession().save(note);
 	}
 	
-	public void update(Note note)
+	public void update(Notes note)
 	{
 		sessionFactory.getCurrentSession().update(note);
 	}
 	
-	public void persist(Note note) // Id deðeri tabloda varsa o kaydý günceller yoksa o kaydý ekler
+	public void persist(Notes note) // Id deðeri tabloda varsa o kaydý günceller yoksa o kaydý ekler
 	{
 		sessionFactory.getCurrentSession().persist(note);
 	}
 	
-	public void delete(Note note)
+	public void delete(Notes note)
 	{
 		sessionFactory.getCurrentSession().delete(note);
 	}
 	
-	public ArrayList<Note> getAll()
+	public ArrayList<Notes> getAll()
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Note"); // Note -> tablo adý deðil class adý
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Notes"); // Note -> tablo adý deðil class adý
 		
-		return (ArrayList<Note>) query.getResultList();
+		return (ArrayList<Notes>) query.getResultList();
 	}
 	
-	public ArrayList<Note> getAll(Long user_id)
+	public ArrayList<Notes> getAll(Long user_id)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Note WHERE user_id=:arananId order by id desc")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Notes WHERE user_id=:arananId order by id desc")
 				.setLong("arananId", user_id);
 		
-		return (ArrayList<Note>) query.getResultList();
+		return (ArrayList<Notes>) query.getResultList();
 	}
 	
-	public Note getFindByNoteId(Long noteId)
+	public Notes getFindByNoteId(Long noteId)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Note WHERE id=:arananId")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Notes WHERE id=:arananId")
 				.setLong("arananId", noteId);
 		
-		return (Note) query.getSingleResult();
+		return (Notes) query.getSingleResult();
 	}
 }

@@ -7,7 +7,7 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mustafakaplan.entity.User;
+import com.mustafakaplan.entity.Users;
 
 public class UserDAO 
 {
@@ -16,27 +16,27 @@ public class UserDAO
 	
 	// CRUD
 	
-	public Long insert(User user)
+	public Long insert(Users user)
 	{
 		return (Long) sessionFactory.getCurrentSession().save(user);
 	}
 	
-	public void update(User user)
+	public void update(Users user)
 	{
 		sessionFactory.getCurrentSession().update(user);
 	}
 	
-	public User getFindByUsernameAndPass(String username, String pass)
+	public Users getFindByUsernameAndPass(String username, String pass)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE username=:username AND password=:pass AND active=:active")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE username=:username AND password=:pass AND active=:active")
 				.setString("username", username)
 				.setString("pass", pass)
 				.setBoolean("active", true);
 		
-		User user = null;
+		Users user = null;
 		
 		try {
-			user = (User) query.getSingleResult();
+			user = (Users) query.getSingleResult();
 		} catch (javax.persistence.NoResultException e) {
 			user = null;
 		}
@@ -44,23 +44,24 @@ public class UserDAO
 		return user;
 	}
 	
-	public User getFindByUsername(String username)
+	public Users getFindByUsername(String username)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE username=:username")
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE username=:username")
 				.setString("username", username);
 		
-		return (User) query.getSingleResult();
+		return (Users) query.getSingleResult();
 	}
 	
-	public User getFindByKey(String key)
+	public Users getFindByKey(String key)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM User WHERE keyreg=:key")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE keyreg=:key")
 				.setString("key", key);
 		
-		User user = null;
+		Users user = null;
 		
 		try {
-			user = (User) query.getSingleResult();
+			user = (Users) query.getSingleResult();
 		} catch (javax.persistence.NoResultException e) {
 			user = null;
 		}

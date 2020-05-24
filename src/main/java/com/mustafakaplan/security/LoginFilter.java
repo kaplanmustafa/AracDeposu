@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.mustafakaplan.entity.User;
-import com.mustafakaplan.notalma.HomeController;
+import com.mustafakaplan.aracdeposu.HomeController;
+import com.mustafakaplan.entity.Users;
 
 @Component
 @Scope("session")
 public class LoginFilter implements Filter 
 {
-	public static User user = null;
+	public static Users user = null;
 	
 	public void destroy() 
 	{
@@ -42,7 +42,7 @@ public class LoginFilter implements Filter
 			return;
 		}
 		
-		User user = (User) req.getSession().getAttribute("user");
+		Users user = (Users) req.getSession().getAttribute("user");
 		this.user = user;
 		
 		if(user != null) // Giriþ yapýlmýþsa
