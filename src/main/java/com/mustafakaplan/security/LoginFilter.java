@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.mustafakaplan.aracdeposu.HomeController;
 import com.mustafakaplan.entity.Users;
+import com.mustafakaplan.aracdeposu.HomeController;
 
 @Component
 @Scope("session")
@@ -33,28 +33,12 @@ public class LoginFilter implements Filter
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		// Tekrar yönlendirme
-		if(req.getRequestURI().contains("login") || req.getRequestURI().contains("register") || req.getRequestURI().contains("addUser")
-				|| req.getRequestURI().contains("logout") || req.getRequestURI().contains("reg") || req.getRequestURI().contains("controlUser")
-				|| req.getRequestURI().contains("rest")) 
-		{
-			chain.doFilter(request, response);
-			return;
-		}
-		
 		Users user = (Users) req.getSession().getAttribute("user");
 		this.user = user;
 		
-		if(user != null) // Giriþ yapýlmýþsa
+		if(user == null && req.getRequestURI().contains("profile")) // Giriþ yapýlmamýþsa ve profile týklanmýþsa
 		{
-			chain.doFilter(request, response);
-			return;
-		}
-		else // Giriþ yapýlmamýþsa
-		{
-			System.out.println("FILTER");
-			
-			res.sendRedirect(HomeController.url + "/login"); // Giriþ sayfasýna yönlendir
+			res.sendRedirect(HomeController.url + "/login");
 		}
 		
 		chain.doFilter(request, response);

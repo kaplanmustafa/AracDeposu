@@ -43,14 +43,14 @@ public class UserService
 		userDAO.update(user);;
 	}
 	
-	public Users getFindByUsernameAndPass(Users user)
+	public Users getFindByEmailAndPass(Users user)
 	{
-		return userDAO.getFindByUsernameAndPass(user.getUsername(), user.getPassword());
+		return userDAO.getFindByEmailAndPass(user.getEmail(), user.getPassword());
 	}
 	
-	public Users getFindByUsername(String username)
+	public Users getFindByEmail(String tel)
 	{
-		return userDAO.getFindByUsername(username);
+		return userDAO.getFindByEmail(tel);
 	}
 	
 	public boolean getFindByKey(String key)

@@ -1,7 +1,7 @@
 function loginBtn()
 {
 	let param ={
-			username: $("#username").val(),
+			email: $("#email").val(),
 			password: $("#pass").val()
 	}
 	
@@ -20,7 +20,7 @@ function loginBtn()
 			}
 			else if(data == 'OK')
 			{
-				$(location).attr('href','index');
+				$(location).attr('href','profile');
 			}
 			
 		},error: function(data) {

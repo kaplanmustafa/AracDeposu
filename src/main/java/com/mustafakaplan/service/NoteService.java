@@ -13,7 +13,6 @@ import com.mustafakaplan.dao.NoteDAO;
 import com.mustafakaplan.dto.UserLoginDTO;
 import com.mustafakaplan.entity.Notes;
 import com.mustafakaplan.entity.Users;
-import com.mustafakaplan.security.LoginFilter;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class NoteService
 	
 	public Long createNote(Notes note, HttpServletRequest request)
 	{
-		note.setUser_id(LoginFilter.user.getId());
+		//note.setUser_id(LoginFilter.user.getId());
 		return noteDao.insert(note);
 	}
 	
@@ -62,10 +61,10 @@ public class NoteService
 	public ArrayList<Notes> getAll(UserLoginDTO login)
 	{
 		Users user2 = new Users();
-		user2.setUsername(login.getUsername());
+		user2.setEmail(login.getEmail());
 		user2.setPassword(login.getPassword());
 		
-		Users user = userService.getFindByUsernameAndPass(user2);
+		Users user = userService.getFindByEmailAndPass(user2);
 		
 		return noteDao.getAll(user.getId());
 	}

@@ -70,7 +70,7 @@ public class LoginController
 	@RequestMapping(value = "/controlUser", method = RequestMethod.POST)
 	public ResponseEntity<String> controlUser(@RequestBody Users user, HttpServletRequest request)
 	{
-		Users user2 = userService.getFindByUsernameAndPass(user);
+		Users user2 = userService.getFindByEmailAndPass(user);
 		
 		if(user2 != null)
 		{

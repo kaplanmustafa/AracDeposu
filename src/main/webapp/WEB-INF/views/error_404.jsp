@@ -2,7 +2,7 @@
 <%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-	<title>Not Alma</title>
+	<title>Araç Deposu</title>
 </head>
 <body>
 <h1>

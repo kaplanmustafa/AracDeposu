@@ -38,15 +38,15 @@
 			<div class="wrap-login100">
 				<div class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						Not Alma
+						<img width="220px" src="asset/login/images/logo.png"></img>
 					</span>
 					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
+						<i class="zmdi"><p style="font-size:20px;">Giriş Yap</p></i>
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Kullanıcı Adı Girin">
-						<input class="input100" type="text" name="username" id="username">
-						<span class="focus-input100" data-placeholder="Kullanıcı Adı"></span>
+					<div class="wrap-input100 validate-input" data-validate = "Email Girin">
+						<input class="input100" type="text" name="email" id="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate="Parola Girin">

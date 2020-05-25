@@ -26,10 +26,10 @@ public class UserDAO
 		sessionFactory.getCurrentSession().update(user);
 	}
 	
-	public Users getFindByUsernameAndPass(String username, String pass)
+	public Users getFindByEmailAndPass(String email, String pass)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE username=:username AND password=:pass AND active=:active")
-				.setString("username", username)
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email AND password=:pass AND active=:active")
+				.setString("email", email)
 				.setString("pass", pass)
 				.setBoolean("active", true);
 		
@@ -44,11 +44,11 @@ public class UserDAO
 		return user;
 	}
 	
-	public Users getFindByUsername(String username)
+	public Users getFindByEmail(String email)
 	{
 		
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE username=:username")
-				.setString("username", username);
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email")
+				.setString("email", email);
 		
 		return (Users) query.getSingleResult();
 	}

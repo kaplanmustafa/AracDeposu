@@ -17,12 +17,10 @@ public class Users
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false)
-	private String username;
-	
 	private String name;
 	private String surname;
 	private String email;
+	private String phone;
 	private String password;
 	private boolean active = false;
 	private Date create_date = new Date();
@@ -38,11 +36,11 @@ public class Users
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+	public String getPhone() {
+		return phone;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getName() {
 		return name;

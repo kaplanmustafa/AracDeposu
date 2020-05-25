@@ -1,7 +1,7 @@
 function addUser()
 {
 	let param ={
-			username: $("#username").val(),
+			phone: $("#phone").val(),
 			name: $("#name").val(),
 			surname: $("#surname").val(),
 			email: $("#email").val(),

@@ -54,14 +54,14 @@
 						<span class="focus-input100" data-placeholder="Soyadınız"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate = "Kullanıcı Adı Girin">
-						<input class="input100" type="text" name="username" id="username">
-						<span class="focus-input100" data-placeholder="Kullanıcı Adı"></span>
-					</div>
-					
 					<div class="wrap-input100 validate-input" data-validate = "Email Girin">
 						<input class="input100" type="text" name="email" id="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Telefon Girin">
+						<input class="input100" type="text" name="phone" id="phone">
+						<span class="focus-input100" data-placeholder="Telefon"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Parola Girin">
