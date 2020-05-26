@@ -86,7 +86,7 @@
 	    					<label for="" class="label">Marka</label>
 								
 							<div class="select-wrap">
-								<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+								<div class="icon"></div>
 								<select name="" id="" class="form-control">
 									<option value="">Marka Seç</option>
 								<option value="">Audi</option>
@@ -155,9 +155,7 @@
 		                      	<option value="">Araç Seç</option>
 		                        <option value="">Otomobil</option>
 		                        <option value="">Arazi, SUV Pickup</option>
-		                        <option value="">Motosiklet</option>
 		                        <option value="">Minivan  Panelvan</option>
-		                        <option value="">Ticari Araçlar</option>
 		                        <option value="">Karavan</option>
 		                      </select>
 		                    </div>
@@ -653,7 +651,7 @@
 	              <ul>
 	                <li><span class="icon icon-map-marker"></span><span class="text">Emniyet, Milas Sk. No:30, 06560 Yenimahalle, Ankara, TÜRKİYE</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+90 (312) 202 89 42</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">aracdeposu@gmail.com</span></a></li>
+	                <li><a href="mailto:aracdeposu@gmail.com"><span class="icon icon-envelope"></span><span class="text">aracdeposu@gmail.com</span></a></li>
 	              </ul>
 	            </div>
             </div>

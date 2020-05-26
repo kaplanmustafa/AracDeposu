@@ -490,7 +490,7 @@
 				<ul>
 				  <li><span class="icon icon-map-marker"></span><span class="text">Emniyet, Milas Sk. No:30, 06560 Yenimahalle, Ankara, TÜRKİYE</span></li>
 				  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+90 (312) 202 89 42</span></a></li>
-				  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">aracdeposu@gmail.com</span></a></li>
+				  <li><a href="mailto:aracdeposu@gmail.com"><span class="icon icon-envelope"></span><span class="text">aracdeposu@gmail.com</span></a></li>
 				</ul>
 			  </div>
 		  </div>

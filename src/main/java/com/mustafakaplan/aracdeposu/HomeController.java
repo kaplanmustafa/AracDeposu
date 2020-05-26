@@ -14,15 +14,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mustafakaplan.entity.Notes;
+import com.mustafakaplan.entity.Brands;
+import com.mustafakaplan.entity.Models;
+import com.mustafakaplan.entity.Vehicles;
+import com.mustafakaplan.security.LoginFilter;
+import com.mustafakaplan.service.BrandService;
 import com.mustafakaplan.service.MailService;
-import com.mustafakaplan.service.NoteService;
+import com.mustafakaplan.service.ModelService;
+import com.mustafakaplan.service.VehicleService;
 
 
 @Controller
 public class HomeController 
 {
 	public static String url = "http://localhost:8085/aracdeposu";
+	
+	@Autowired
+	private VehicleService vehicleService;
+	
+	@Autowired
+	private BrandService brandService;
+	
+	@Autowired
+	private ModelService modelService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model, HttpServletRequest request) 
@@ -48,9 +62,28 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
-	public String profile(Model model) 
+	public String profile(Model model, HttpServletRequest request) 
 	{
+		model.addAttribute("user", request.getSession().getAttribute("user"));
 		return "profile";
+	}
+	
+	@RequestMapping(value = "/getVehicle", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Vehicles>> getVehicle(HttpServletRequest request)
+	{
+		return new ResponseEntity<>(vehicleService.getAll(), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/getBrand", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Brands>> getBrand(HttpServletRequest request)
+	{
+		return new ResponseEntity<>(brandService.getAll(Integer.parseInt(request.getParameter("id"))), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/getModel", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Models>> getModel(HttpServletRequest request)
+	{
+		return new ResponseEntity<>(modelService.getAll(Integer.parseInt(request.getParameter("id"))), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
