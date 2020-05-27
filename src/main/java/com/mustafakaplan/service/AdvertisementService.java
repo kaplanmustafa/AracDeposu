@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mustafakaplan.dao.ModelDAO;
-import com.mustafakaplan.entity.Models;
+import com.mustafakaplan.dao.AdvertisementDAO;
+import com.mustafakaplan.entity.Advertisements;
 
 @Service
 @Transactional
-public class ModelService 
+public class AdvertisementService 
 {	
 	@Autowired
-	private ModelDAO modelDAO;
+	private AdvertisementDAO advertisementDAO;
 	
-	public ArrayList<Models> getAll(int id, int id2)
+	public ArrayList<Advertisements> getAllByUserId(int id)
 	{
-		return modelDAO.getAll(id, id2);
+		return advertisementDAO.getAllByUserId(id);
 	}
 }

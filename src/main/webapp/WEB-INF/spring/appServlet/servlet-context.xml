@@ -44,15 +44,25 @@
 		<beans:property name="sessionFactory" ref="sessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="268435456" />
+	</beans:bean>
+	
 	<beans:bean id="vehicleService" class="com.mustafakaplan.service.VehicleService" />
 	<beans:bean id="userService" class="com.mustafakaplan.service.UserService" />
 	<beans:bean id="brandService" class="com.mustafakaplan.service.BrandService" />
 	<beans:bean id="modelService" class="com.mustafakaplan.service.ModelService" />
+	<beans:bean id="typeService" class="com.mustafakaplan.service.TypeService" />
+	<beans:bean id="cityService" class="com.mustafakaplan.service.CityService" />
+	<beans:bean id="adService" class="com.mustafakaplan.service.AdvertisementService" />
 	
 	<beans:bean id="userDao" class="com.mustafakaplan.dao.UserDAO" />
 	<beans:bean id="vehicleDao" class="com.mustafakaplan.dao.VehicleDAO" />
 	<beans:bean id="brandDao" class="com.mustafakaplan.dao.BrandDAO" />
 	<beans:bean id="modelDao" class="com.mustafakaplan.dao.ModelDAO" />
+	<beans:bean id="typeDao" class="com.mustafakaplan.dao.TypeDAO" />
+	<beans:bean id="cityDao" class="com.mustafakaplan.dao.CityDAO" />
+	<beans:bean id="adDao" class="com.mustafakaplan.dao.AdvertisementDAO" />
 	
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
 	

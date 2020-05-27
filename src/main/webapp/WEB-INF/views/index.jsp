@@ -101,9 +101,6 @@
 								<div class="icon"><span class="ion-ios-arrow-down"></span></div>
 								<select name="" id="" class="form-control">
 									<option value="">Model Seç</option>
-								<option value="">Audi</option>
-								<option value="">Bmw</option>
-								<option value="">Mercedes</option>
 								</select>
 							</div>
 	    				</div>

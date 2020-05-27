@@ -7,18 +7,18 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mustafakaplan.entity.Brands;
+import com.mustafakaplan.entity.Types;
 
-public class BrandDAO 
+public class TypeDAO 
 {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public ArrayList<Brands> getAll(int id)
+	public ArrayList<Types> getAll(int id)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Brands WHERE vehicle_id=:id order by brand_id")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Types WHERE vehicle_id=:id order by type_id")
 				.setInteger("id", id);// tablo adý deðil class adý
 		
-		return (ArrayList<Brands>) query.getResultList();
+		return (ArrayList<Types>) query.getResultList();
 	}
 }

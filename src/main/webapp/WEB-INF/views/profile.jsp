@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
     <link rel="stylesheet" href="asset/home/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="asset/home/css/animate.css">
@@ -92,7 +93,22 @@
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
           	<h2 class="text-center">Ücretsiz İlan Ver</h2>
-            <form action="#" class="bg-light p-5 contact-form">
+          	
+            <form id="upload-file-form" class="bg-light p-5 contact-form">
+	            <div class="form-group">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="profile-img" style="display:none">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img1" style="display:none">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img2" style="display:none">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img3" style="display:none">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img4" style="display:none">
+					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img5" style="display:none">
+					<img src="asset/home/images/add.png" id="profile-img-tag" width="200px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img1-tag" width="200px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img2-tag" width="200px" height="150px" /><br><br>
+					<img src="asset/home/images/add.png" id="img3-tag" width="200px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img4-tag" width="200px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img5-tag" width="200px" height="150px" />
+				</div>
               <div class="form-group">
 				<div class="icon"></div>
 					<select name="" id="vehicle" class="form-control" onchange="getBrand()">
@@ -133,30 +149,44 @@
 				</div>
               <div class="form-group">
                 <div class="icon"></div>
-					<select name="" id="" class="form-control">
+					<select name="" id="type" class="form-control">
 						<option value="">Kasa Tipi Seç</option>
-					<option value="">Cabrio</option>
-					<option value="">Coupe</option>
-					<option value="">Hatchback 3 kapı</option>
-					<option value="">Hatchback 5 kapı</option>
-					<option value="">Sedan</option>
-					<option value="">Station Wagon</option>
-					<option value="">Crossover</option>
-					<option value="">MPV</option>
-					<option value="">Roadster</option>
 					</select>
 				</div>
+			 <div class="form-group">
+                <div class="icon"></div>
+					<select name="" id="city" class="form-control">
+						<option value="">Şehir Seç</option>
+					</select>
+			</div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Yıl">
+                <input type="text" class="form-control" placeholder="Yıl" maxlength="4" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
 				</div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Kilometre">
+                <input type="text" class="form-control" placeholder="Kilometre" maxlength="6" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
+              </div>
+              <div class="form-group">
+                <input type="checkbox"> ABC
+                <div style="float:right;">TV <input type="checkbox"></div><br>
+                <input type="checkbox"> Hava Yastığı
+                <div style="float:right;">Arka Eğlence Paketi <input type="checkbox"></div><br>
+                <input type="checkbox"> Immobilizer
+                <div style="float:right;">Klima <input type="checkbox"></div><br>
+                <input type="checkbox"> Yokuş Kalkış Desteği
+                <div style="float:right;">Hız Sabitleyici <input type="checkbox"></div><br>
+                <input type="checkbox"> Şeritten Ayrılma İkazı
+                <div style="float:right;">Geri Görüş Kamerası <input type="checkbox"></div><br>
+                <input type="checkbox"> Radyo - CD Çalar
+                <div style="float:right;">Boya <input type="checkbox"></div><br>
+                <input type="checkbox"> Bluetooth - Telefon
+                <div style="float:right;">Değişen <input type="checkbox"></div><br>
+                <input type="checkbox"> Navigasyon
               </div>
               <div class="form-group">
                 <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Açıklama"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="Onayla" class="btn btn-primary py-3 px-5">
+               <input type="button" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
               </div>
             </form>
           
@@ -236,7 +266,6 @@
   <script src="asset/home/js/bootstrap-datepicker.js"></script>
   <script src="asset/home/js/jquery.timepicker.min.js"></script>
   <script src="asset/home/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="asset/home/js/main.js"></script>
   
   <script src="asset/custom/profile.js"></script>
