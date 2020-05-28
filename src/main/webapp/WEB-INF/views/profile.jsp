@@ -22,10 +22,6 @@
     <link rel="stylesheet" href="asset/home/css/aos.css">
 
     <link rel="stylesheet" href="asset/home/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="asset/home/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="asset/home/css/jquery.timepicker.css">
-
     
     <link rel="stylesheet" href="asset/home/css/flaticon.css">
     <link rel="stylesheet" href="asset/home/css/icomoon.css">
@@ -78,7 +74,7 @@
 		          	<div class="icon">
 		          		<span class="icon-mobile-phone"></span>
 		          	</div>
-		            <p><span>Telefon:</span>${user.phone}</p>
+		            <p><span>Telefon:</span>+90 ${user.phone}</p>
 		          </div>
 		          <div class="col-md-4 text-center py-4">
 		          	<div class="icon">
@@ -89,6 +85,25 @@
 		        </div>
           </div>
         </div>
+        
+        <div class="row">
+      		<div class="col-md-12 pills">
+						<div class="bd-example bd-example-tabs">
+							<div class="d-flex justify-content-center">
+							  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+							    <li class="nav-item">
+							      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">İlan Ver</a>
+							    </li>
+							    <li class="nav-item">
+							      <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">İlanlarım</a>
+							    </li>
+							  </ul>
+							</div>
+
+						  <div class="tab-content" id="pills-tabContent">
+						    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+						    	
         
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
@@ -102,12 +117,12 @@
 					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img3" style="display:none">
 					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img4" style="display:none">
 					<input type="file" name="files" accept='image/png,image/jpeg,image/jpg' id="img5" style="display:none">
-					<img src="asset/home/images/add.png" id="profile-img-tag" width="200px" height="150px" /><tab></tab>
-					<img src="asset/home/images/add.png" id="img1-tag" width="200px" height="150px" /><tab></tab>
-					<img src="asset/home/images/add.png" id="img2-tag" width="200px" height="150px" /><br><br>
-					<img src="asset/home/images/add.png" id="img3-tag" width="200px" height="150px" /><tab></tab>
-					<img src="asset/home/images/add.png" id="img4-tag" width="200px" height="150px" /><tab></tab>
-					<img src="asset/home/images/add.png" id="img5-tag" width="200px" height="150px" />
+					<img src="asset/home/images/add_pp.png" id="profile-img-tag" width="194px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img1-tag" width="194px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img2-tag" width="194px" height="150px" /><br><br>
+					<img src="asset/home/images/add.png" id="img3-tag" width="194px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img4-tag" width="194px" height="150px" /><tab></tab>
+					<img src="asset/home/images/add.png" id="img5-tag" width="194px" height="150px" />
 				</div>
               <div class="form-group">
 				<div class="icon"></div>
@@ -129,22 +144,14 @@
 				</div>
               <div class="form-group">
                 <div class="icon"></div>
-					<select name="" id="" class="form-control">
+					<select name="" id="fuel" class="form-control">
 						<option value="">Yakıt Seç</option>
-						<option value="">Benzin</option>
-						<option value="">Benzin & LPG</option>
-						<option value="">Dizel</option>
-						<option value="">Hybrid</option>
-						<option value="">Elektrik</option>
 					</select>
 				</div>
               <div class="form-group">
                  <div class="icon"></div>
-					<select name="" id="" class="form-control">
+					<select name="" id="gear" class="form-control">
 						<option value="">Vites Seç</option>
-					<option value="">Manuel</option>
-					<option value="">Yarı Otomatik</option>
-					<option value="">Otomatik</option>
 					</select>
 				</div>
               <div class="form-group">
@@ -160,40 +167,60 @@
 					</select>
 			</div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Yıl" maxlength="4" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
+                <input type="text" id="year" class="form-control" placeholder="Yıl" maxlength="4" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
 				</div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Kilometre" maxlength="6" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
+                <input type="text" id="km" class="form-control" placeholder="Kilometre" maxlength="6" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
               </div>
               <div class="form-group">
-                <input type="checkbox"> ABC
-                <div style="float:right;">TV <input type="checkbox"></div><br>
-                <input type="checkbox"> Hava Yastığı
-                <div style="float:right;">Arka Eğlence Paketi <input type="checkbox"></div><br>
-                <input type="checkbox"> Immobilizer
-                <div style="float:right;">Klima <input type="checkbox"></div><br>
-                <input type="checkbox"> Yokuş Kalkış Desteği
-                <div style="float:right;">Hız Sabitleyici <input type="checkbox"></div><br>
-                <input type="checkbox"> Şeritten Ayrılma İkazı
-                <div style="float:right;">Geri Görüş Kamerası <input type="checkbox"></div><br>
-                <input type="checkbox"> Radyo - CD Çalar
-                <div style="float:right;">Boya <input type="checkbox"></div><br>
-                <input type="checkbox"> Bluetooth - Telefon
-                <div style="float:right;">Değişen <input type="checkbox"></div><br>
-                <input type="checkbox"> Navigasyon
+                <div class="icon"></div>
+					<select name="" id="con" class="form-control">
+						<option value="">Durum Seç</option>
+					</select>
+			</div>
+              <div class="form-group">
+                <input type="text" id="price" class="form-control" placeholder="Fiyat" maxlength="12" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
               </div>
               <div class="form-group">
-                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Açıklama"></textarea>
+                <input type="checkbox" id="prp1"> ABC
+                <div style="float:right;">TV <input type="checkbox" id="prp2"></div><br>
+                <input type="checkbox" id="prp3"> Hava Yastığı
+                <div style="float:right;">Arka Eğlence Paketi <input type="checkbox" id="prp4"></div><br>
+                <input type="checkbox" id="prp5"> Immobilizer
+                <div style="float:right;">Klima <input type="checkbox" id="prp6"></div><br>
+                <input type="checkbox" id="prp7"> Yokuş Kalkış Desteği
+                <div style="float:right;">Hız Sabitleyici <input type="checkbox" id="prp8"></div><br>
+                <input type="checkbox" id="prp9"> Şeritten Ayrılma İkazı
+                <div style="float:right;">Geri Görüş Kamerası <input type="checkbox" id="prp10"></div><br>
+                <input type="checkbox" id="prp11"> Radyo - CD Çalar
+                <div style="float:right;">Boya <input type="checkbox" id="prp12"></div><br>
+                <input type="checkbox" id="prp13"> Bluetooth - Telefon
+                <div style="float:right;">Değişen <input type="checkbox" id="prp14"></div><br>
+                <input type="checkbox" id="prp15"> Navigasyon
+              </div>
+              <div class="form-group">
+                <textarea name="" id="des" cols="30" rows="7" class="form-control" placeholder="Açıklama"></textarea>
               </div>
               <div class="form-group">
                <input type="button" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
               </div>
             </form>
           
-          </div>
-        </div>
-      </div>
-    </section>
+           </div>
+	      </div>
+	     </div>
+						    
+	    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
+	      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+				<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+	    </div>
+   
+	   </div>
+	  </div>
+	</div>
+   </div>
+ </div>
+</section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">

@@ -38,7 +38,7 @@
 			<div class="wrap-login100">
 				<div class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						<img width="220px" src="asset/login/images/logo.png"></img>
+						<a href="index"><img width="220px" src="asset/login/images/logo.png"></img></a>
 					</span>
 					<span class="login100-form-title p-b-48">
 						<i class="zmdi"><p style="font-size:20px;">Giriş Yap</p></i>

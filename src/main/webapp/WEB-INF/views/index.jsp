@@ -299,20 +299,14 @@
 		</section>
 
 		<div class="container">
-		  <div class="row">
+		  <div class="row" id="list">
 
-			<div class="col-lg-4 col-md-6 mb-4">
+			<!-- <div class="col-lg-4 col-md-6 mb-4">
 			  <div class="item-1 ">
 				  <a href="#"><img src="asset/home/cars/images/img_1.jpg" alt="Image" class="img-fluid"></a>
 				  <div class="item-1-contents bg-light">
 					<div class="text-center">
 					<h3><a href="#">Range Rover S64 Coupe</a></h3>
-					<div class="rating">
-					  <span class="icon-star text-warning"></span>
-					  <span class="icon-star text-warning"></span>
-					  <span class="icon-star text-warning"></span>
-					  <span class="icon-star text-warning"></span>
-					</div>
 					<div class="rent-price"><span>₺250000</span></div>
 					</div>
 					<ul class="specs">
@@ -534,7 +528,7 @@
 					  </div>
 					</div>
 				  </div>
-			  </div>
+			  </div>-->
   
 			<div class="col-12">
 			</div>
@@ -685,9 +679,9 @@
   <script src="asset/home/js/bootstrap-datepicker.js"></script>
   <script src="asset/home/js/jquery.timepicker.min.js"></script>
   <script src="asset/home/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="asset/home/js/google-map.js"></script>
   <script src="asset/home/js/main.js"></script>
+
+  <script src="asset/custom/index.js"></script>
 
   <!-- Cars -->
 

@@ -38,10 +38,10 @@
 			<div class="wrap-login100">
 				<div class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
-						Not Alma
+						<a href="index"><img width="220px" src="asset/login/images/logo.png"></img></a>
 					</span>
 					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
+						<i class="zmdi"><p style="font-size:20px;">Kayıt Ol</p></i>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Ad Girin">
@@ -60,7 +60,7 @@
 					</div>
 					
 					<div class="wrap-input100 validate-input" data-validate = "Telefon Girin">
-						<input class="input100" type="text" name="phone" id="phone">
+						<input class="input100" type="text" name="phone" id="phone" maxlength="10" onkeypress='return event.charCode>= 48 &&event.charCode<= 57'>
 						<span class="focus-input100" data-placeholder="Telefon"></span>
 					</div>
 

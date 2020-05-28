@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mustafakaplan.entity.Users;
-import com.mustafakaplan.aracdeposu.HomeController;
+import com.mustafakaplan.aracdeposu.ProfileController;
 
 @Component
 @Scope("session")
@@ -38,7 +38,7 @@ public class LoginFilter implements Filter
 		
 		if(user == null && req.getRequestURI().contains("profile")) // Giriþ yapýlmamýþsa ve profile týklanmýþsa
 		{
-			res.sendRedirect(HomeController.url + "/login");
+			res.sendRedirect(ProfileController.url + "/login");
 		}
 		
 		chain.doFilter(request, response);

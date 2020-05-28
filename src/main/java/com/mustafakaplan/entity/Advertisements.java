@@ -13,18 +13,21 @@ public class Advertisements
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long ad_id;
 	
-	private int user_id;
+	private Long user_id;
+	private int active;
 	private String vehicle;
 	private String brand;
 	private String model;
 	private String type;
 	private String fuel;
 	private String gear;
+	private String con;
 	private String city;
 	private int year;
 	private int km;
+	private long price;
 	private Date ad_date = new Date();
 	
 	@Column(length = 99999999)
@@ -47,23 +50,29 @@ public class Advertisements
 	private int changing;
 	
 	private String pp;
-	private String photo1;
-	private String photo2;
-	private String photo3;
-	private String photo4;
-	private String photo5;
+	private String img1;
+	private String img2;
+	private String img3;
+	private String img4;
+	private String img5;
 	
-	public int getId() {
-		return id;
+	public long getAd_id() {
+		return ad_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setAd_id(long ad_id) {
+		this.ad_id = ad_id;
 	}
-	public int getUser_id() {
+	public Long getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
+	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
+	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
 	}
 	public String getVehicle() {
 		return vehicle;
@@ -227,34 +236,49 @@ public class Advertisements
 	public void setPp(String pp) {
 		this.pp = pp;
 	}
-	public String getPhoto1() {
-		return photo1;
+	public String getImg1() {
+		return img1;
 	}
-	public void setPhoto1(String photo1) {
-		this.photo1 = photo1;
+	public void setImg1(String img1) {
+		this.img1 = img1;
 	}
-	public String getPhoto2() {
-		return photo2;
+	public String getImg2() {
+		return img2;
 	}
-	public void setPhoto2(String photo2) {
-		this.photo2 = photo2;
+	public void setImg2(String img2) {
+		this.img2 = img2;
 	}
-	public String getPhoto3() {
-		return photo3;
+	public String getImg3() {
+		return img3;
 	}
-	public void setPhoto3(String photo3) {
-		this.photo3 = photo3;
+	public void setImg3(String img3) {
+		this.img3 = img3;
 	}
-	public String getPhoto4() {
-		return photo4;
+	public String getImg4() {
+		return img4;
 	}
-	public void setPhoto4(String photo4) {
-		this.photo4 = photo4;
+	public void setImg4(String img4) {
+		this.img4 = img4;
 	}
-	public String getPhoto5() {
-		return photo5;
+	public String getImg5() {
+		return img5;
 	}
-	public void setPhoto5(String photo5) {
-		this.photo5 = photo5;
+	public void setImg5(String img5) {
+		this.img5 = img5;
+	}
+	public long getPrice() {
+		return price;
+	}
+	public void setPrice(long price) {
+		this.price = price;
+	}
+	public void setAd_id(Long ad_id) {
+		this.ad_id = ad_id;
+	}
+	public String getCon() {
+		return con;
+	}
+	public void setCon(String con) {
+		this.con = con;
 	}
 }

@@ -52,7 +52,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="index" class="nav-link">Ana Sayfa</a></li>
-			  <li class="nav-item active"><a href="carl" class="nav-link">Araçlar</a></li>
+			  <li class="nav-item active"><a href="car" class="nav-link">Araçlar</a></li>
 	          <li class="nav-item"><a href="profile" class="nav-link">Profil</a></li>
 	        </ul>
 	      </div>
@@ -65,7 +65,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="indexl">Ana Sayfa <i class="ion-ios-arrow-forward"></i></a></span></p>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index">Ana Sayfa <i class="ion-ios-arrow-forward"></i></a></span></p>
             <h1 class="mb-3 bread">ARAÇLAR</h1>
           </div>
         </div>
