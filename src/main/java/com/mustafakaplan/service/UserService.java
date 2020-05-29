@@ -53,6 +53,11 @@ public class UserService
 		return userDAO.getFindByEmail(tel);
 	}
 	
+	public ArrayList<Users> getFindById(Long id)
+	{
+		return userDAO.getFindById(id);
+	}
+	
 	public boolean getFindByKey(String key)
 	{
 		Users user = userDAO.getFindByKey(key);

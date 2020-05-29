@@ -26,10 +26,10 @@ function getCars(){
 				list = list  
 				+'<div class="col-lg-4 col-md-6 mb-4">'
 				+'<div class="item-1 ">'
-				+'  <a href="#"><img src="'+val.pp+'" alt="'+val.brand+' '+val.model+'" class="img-fluid"></a>'
+				+'  <a href="car-single/'+val.ad_id+'"><img src="'+val.pp+'" alt="'+val.brand+' '+val.model+'" class="img-fluid"></a>'
 				+' <div class="item-1-contents bg-light">'
 				+'	<div class="text-center">'
-				+'	<h3><a href="#">'+val.brand+' '+val.model+'</a></h3>'
+				+'	<h3><a href="car-single/'+val.ad_id+'">'+val.brand+' '+val.model+'</a></h3>'
 				+'	<div class="rating">'
 				+ cons	
 				+'</div>'
@@ -54,7 +54,7 @@ function getCars(){
 				+'  </li>'
 				+'</ul>'
 				+'<div class="d-flex action">'
-				+'  <a href="#" class="btn btn-primary">İncele</a>'
+				+'  <a href="car-single/'+val.ad_id+'" class="btn btn-primary">İncele</a>'
 				+'</div>'
 				+'  </div>'
 				+'</div>'

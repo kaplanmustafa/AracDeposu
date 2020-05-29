@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mustafakaplan.entity.Advertisements;
 import com.mustafakaplan.entity.Users;
 
 public class UserDAO 
@@ -51,6 +52,15 @@ public class UserDAO
 				.setString("email", email);
 		
 		return (Users) query.getSingleResult();
+	}
+	
+	public ArrayList<Users>  getFindById(Long id)
+	{
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE id=:id")
+				.setLong("id", id);
+		
+		return (ArrayList<Users>) query.getResultList();
 	}
 	
 	public Users getFindByKey(String key)

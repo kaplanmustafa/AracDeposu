@@ -27,6 +27,7 @@ import com.mustafakaplan.entity.Brands;
 import com.mustafakaplan.entity.Cities;
 import com.mustafakaplan.entity.Models;
 import com.mustafakaplan.entity.Types;
+import com.mustafakaplan.entity.Users;
 import com.mustafakaplan.entity.Vehicles;
 import com.mustafakaplan.security.LoginFilter;
 import com.mustafakaplan.service.AdvertisementService;
@@ -35,6 +36,7 @@ import com.mustafakaplan.service.CityService;
 import com.mustafakaplan.service.MailService;
 import com.mustafakaplan.service.ModelService;
 import com.mustafakaplan.service.TypeService;
+import com.mustafakaplan.service.UserService;
 import com.mustafakaplan.service.VehicleService;
 
 
@@ -60,6 +62,9 @@ public class ProfileController
 	
 	@Autowired
 	private AdvertisementService advertisementService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model, HttpServletRequest request) 
@@ -97,6 +102,13 @@ public class ProfileController
 		return new ResponseEntity<>(vehicleService.getAll(), HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/getAdUser", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Users>> getAdUser(HttpServletRequest request)
+	{
+		System.out.println("****************" + request.getParameter("id"));
+		return new ResponseEntity<>(userService.getFindById(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
+	}
+	
 	@RequestMapping(value = "/getCity", method = RequestMethod.POST)
 	public ResponseEntity<ArrayList<Cities>> getCity(HttpServletRequest request)
 	{
@@ -132,7 +144,7 @@ public class ProfileController
 			return new ResponseEntity<>("EMPTY", HttpStatus.CREATED);
 		}
 		
-		String path= "C:\\xampp\\htdocs\\images\\";  
+		String path= "C:\\Users\\m06ka\\Desktop\\MASAUSTU\\spring-tool-suite-3.9.12.CI-B1344-e4.15.0-win32-x86_64\\sts-bundle\\sts-3.9.12.CI-B1344\\projects\\AracDeposu\\src\\main\\webapp\\resources\\asset\\ad_images\\";  
 		
 		File dir = new File(path + adId);
 		if (!dir.exists())
@@ -151,7 +163,7 @@ public class ProfileController
 			if(i == 0)
 			{
 				filename = "pp" + "." + extension;
-				oldAd.setPp("http://mustafa.com/images/" + adId + "/" + filename);
+				oldAd.setPp("asset/ad_images/" + adId + "/" + filename);
 			}
 			else
 			{
@@ -159,19 +171,19 @@ public class ProfileController
 				
 				if(i == 1)
 				{
-					oldAd.setImg1("http://mustafa.com/images/" + adId + "/" + filename);
+					oldAd.setImg1("asset/ad_images/" + adId + "/" + filename);
 				}else if(i == 2)
 				{
-					oldAd.setImg2("http://mustafa.com/images/" + adId + "/" + filename);
+					oldAd.setImg2("asset/ad_images/" + adId + "/" + filename);
 				}else if(i == 3)
 				{
-					oldAd.setImg3("http://mustafa.com/images/" + adId + "/" + filename);
+					oldAd.setImg3("asset/ad_images/" + adId + "/" + filename);
 				}else if(i == 4)
 				{
-					oldAd.setImg4("http://mustafa.com/images/" + adId + "/" + filename);
+					oldAd.setImg4("asset/ad_images/" + adId + "/" + filename);
 				}else if(i == 5)
 				{
-					oldAd.setImg5("http://mustafa.com/images/" + adId + "/" + filename);
+					oldAd.setImg5("asset/ad_images/" + adId + "/" + filename);
 				}
 			}
 			
@@ -208,5 +220,9 @@ public class ProfileController
 		return "error_404";
 	}
 	
-	
+	@RequestMapping(value = "/getCarsProfile", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Advertisements>> getCarsProfile(HttpServletRequest request)
+	{ 
+		return new ResponseEntity<>(advertisementService.getAllByUserId(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
+	}
 }

@@ -26,9 +26,18 @@
     <link rel="stylesheet" href="asset/home/css/flaticon.css">
     <link rel="stylesheet" href="asset/home/css/icomoon.css">
     <link rel="stylesheet" href="asset/home/css/style.css">
+    
+    <!-- Cars -->
+
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans:300,400,700&display=swap" rel="stylesheet">
+
+    <!-- MAIN CSS -->
+	<link rel="stylesheet" href="asset/home/cars/css/style.css">
+
+	<!-- Cars -->
   </head>
   <body>
-    
+    <input type="text" hidden style="display: none" value="${user.id}" id="id" />
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index">Araç<span> Deposu</span></a>
@@ -68,7 +77,7 @@
 		          	<div class="icon">
 		          		<span class="icon-map-o"></span>
 		          	</div>
-		            <p><span>İlan Sayısı:</span>3</p>
+		            <p id="count"></p>
 		          </div>
 		          <div class="col-md-4 text-center border-height py-4">
 		          	<div class="icon">
@@ -211,8 +220,33 @@
 	     </div>
 						    
 	    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-	      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-				<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+	      <!-- Cars -->
+  
+		  <div class="site-section">
+	
+			<section style="margin-top: -150px; margin-bottom -50px" class="ftco-section">
+				<div class="container-fluid px-4">
+					<div class="row justify-content-center">
+				  <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+					  <span class="subheading">İLANLAR</span>
+					<h2 class="mb-2">Tüm İlanlarım</h2>
+				  </div>
+				  	</div>
+				</div>
+			</section>
+	
+			<div class="container">
+			  <div class="row" id="ads">
+	
+	  
+				<div class="col-12">
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+	
+	<!-- Cars -->
 	    </div>
    
 	   </div>
@@ -222,7 +256,7 @@
  </div>
 </section>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer style="margin-top: -100px;" class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
 		  <div class="row mb-5">
 			<div class="col-md">
@@ -296,6 +330,12 @@
   <script src="asset/home/js/main.js"></script>
   
   <script src="asset/custom/profile.js"></script>
+  
+  <!-- Cars -->
+
+  <script src="asset/home/cars/js/main.js"></script>
+
+  <!-- Cars -->
     
   </body>
 </html>

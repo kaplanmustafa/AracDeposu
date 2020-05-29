@@ -31,6 +31,11 @@ public class AdvertisementService
 		return advertisementDAO.getAll();
 	}
 	
+	public ArrayList<Advertisements> getAllByUserId(Long user_id)
+	{
+		return advertisementDAO.getAllByUserId(user_id);
+	}
+	
 	public Long updateAd(Advertisements ad)
 	{
 		advertisementDAO.update(ad);
@@ -45,5 +50,10 @@ public class AdvertisementService
 	public Advertisements getLastAd()
 	{
 		return advertisementDAO.getLastAd();
+	}
+	
+	public Advertisements getFindByAdId(Long adId)
+	{
+		return advertisementDAO.getFindByAdId(adId);
 	}
 }
