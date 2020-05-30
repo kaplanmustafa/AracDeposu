@@ -22,6 +22,14 @@ function loginBtn()
 			{
 				$(location).attr('href','profile');
 			}
+			else if(data == 'ADMIN')
+			{
+				$(location).attr('href','admin');
+			}
+			else if(data == 'NOTACTIVE')
+			{
+				alert("Lütfen Mail Adresinizi Doğrulayın!");
+			}
 			
 		},error: function(data) {
 			alert(data);

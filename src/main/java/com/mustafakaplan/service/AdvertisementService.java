@@ -26,9 +26,21 @@ public class AdvertisementService
 		return advertisementDAO.insert(ad);
 	}
 	
+	public Long deleteAd(Advertisements ad)
+	{
+		advertisementDAO.delete(ad);
+		return 1l;
+	}
+	
 	public ArrayList<Advertisements> getAll()
 	{
 		return advertisementDAO.getAll();
+	}
+	
+	public Long updateAd(Advertisements ad)
+	{
+		advertisementDAO.updateAd(ad);
+		return 1l;
 	}
 	
 	public ArrayList<Advertisements> getAllByUserId(Long user_id)
@@ -36,12 +48,26 @@ public class AdvertisementService
 		return advertisementDAO.getAllByUserId(user_id);
 	}
 	
-	public Long updateAd(Advertisements ad)
+	public ArrayList<Advertisements> getActiveAll()
 	{
-		advertisementDAO.update(ad);
-		return 1l;
+		return advertisementDAO.getActiveAll();
 	}
-
+	
+	public ArrayList<Advertisements> getActiveAllForIndex()
+	{
+		return advertisementDAO.getActiveAllForIndex();
+	}
+	
+	public ArrayList<Advertisements> getWaitingAll()
+	{
+		return advertisementDAO.getWaitingAll();
+	}
+	
+	public ArrayList<Advertisements> getDeniedAll()
+	{
+		return advertisementDAO.getDeniedAll();
+	}
+	
 	public ArrayList<Advertisements> getAllByUserId(int id)
 	{
 		return advertisementDAO.getAllByUserId(id);

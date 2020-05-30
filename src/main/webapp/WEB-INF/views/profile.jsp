@@ -50,6 +50,7 @@
 	          <li class="nav-item"><a href="index" class="nav-link">Ana Sayfa</a></li>
 			  <li class="nav-item"><a href="car" class="nav-link">Araçlar</a></li>
 	          <li class="nav-item active"><a href="profile" class="nav-link">Profil</a></li>
+	          <li class="nav-item"><a href="logout" class="nav-link">Çıkış Yap</a></li>
 	        </ul>
 	      </div>
 	    </div>

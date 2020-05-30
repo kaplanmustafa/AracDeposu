@@ -38,6 +38,11 @@ public class UserService
 		return 1l;
 	}
 	
+	public int getNumber()
+	{
+		return userDAO.getNumber();
+	}
+	
 	public void update(Users user)
 	{
 		userDAO.update(user);;
@@ -48,9 +53,14 @@ public class UserService
 		return userDAO.getFindByEmailAndPass(user.getEmail(), user.getPassword());
 	}
 	
-	public Users getFindByEmail(String tel)
+	public Users getFindByEmail(String mail)
 	{
-		return userDAO.getFindByEmail(tel);
+		return userDAO.getFindByEmail(mail);
+	}
+	
+	public Users getFindByPhone(String phone)
+	{
+		return userDAO.getFindByPhone(phone);
 	}
 	
 	public ArrayList<Users> getFindById(Long id)

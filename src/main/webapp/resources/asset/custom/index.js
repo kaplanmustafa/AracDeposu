@@ -61,8 +61,8 @@ function getCars(){
 				+'</div>';
 			});
 			$("#list").html(list);
-		},error: function(data) {
-			alert(data);
+		},error: {
+			
 		}
 	});
 }

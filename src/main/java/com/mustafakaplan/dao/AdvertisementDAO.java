@@ -19,7 +19,22 @@ public class AdvertisementDAO
 		return  (long) sessionFactory.getCurrentSession().save(ad);
 	}
 	
-	public void update(Advertisements ad)
+	public void delete(Advertisements ad)
+	{
+		sessionFactory.getCurrentSession().delete(ad);
+	}
+	
+	public void updateAd(Advertisements ad)
+	{
+		sessionFactory.getCurrentSession().update(ad);
+	}
+	
+	public void publishAd(Advertisements ad)
+	{
+		sessionFactory.getCurrentSession().update(ad);
+	}
+	
+	public void denyAd(Advertisements ad)
 	{
 		sessionFactory.getCurrentSession().update(ad);
 	}
@@ -27,6 +42,34 @@ public class AdvertisementDAO
 	public ArrayList<Advertisements> getAll()
 	{
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements");
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getActiveAll()
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE active=1 order by ad_id desc");
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getActiveAllForIndex()
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE active=1 order by ad_id desc");
+		query.setMaxResults(6);
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getWaitingAll()
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE active=0 order by ad_id desc");
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getDeniedAll()
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE active=-1 order by ad_id desc");
 		
 		return (ArrayList<Advertisements>) query.getResultList();
 	}

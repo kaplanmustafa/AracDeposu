@@ -7,7 +7,6 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,9 +35,29 @@ public class LoginFilter implements Filter
 		Users user = (Users) req.getSession().getAttribute("user");
 		this.user = user;
 		
-		if(user == null && req.getRequestURI().contains("profile")) // Giriþ yapýlmamýþsa ve profile týklanmýþsa
+		// Giriþ yapýlmamýþsa ve profile týklanmýþsa
+		if(user == null && (req.getRequestURI().contains("profile") || req.getRequestURI().contains("admin"))) 
 		{
+			
 			res.sendRedirect(ProfileController.url + "/login");
+		}
+		else if(user != null)
+		{
+			if(user.getEmail().equals("aracdeposu@gmail.com") && req.getRequestURI().contains("profile"))
+			{
+				res.sendRedirect(ProfileController.url + "/admin");
+			}
+			
+			else if(req.getRequestURI().contains("register") || req.getRequestURI().contains("login"))
+			{
+				res.sendRedirect(ProfileController.url + "/profile");
+			}
+			
+			if(!user.getEmail().equals("aracdeposu@gmail.com") && req.getRequestURI().contains("admin"))
+			{
+				res.sendRedirect(ProfileController.url + "/profile");
+			}
+			
 		}
 		
 		chain.doFilter(request, response);

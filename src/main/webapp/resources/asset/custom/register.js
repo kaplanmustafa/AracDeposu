@@ -43,9 +43,17 @@ function addUser()
 				{
 					alert("İşlem Sırasında Bir Hata Oluştu!");
 				}
+				else if(data == 'MAIL')
+				{
+					alert("Mail Adresi Başka Bir Kullanıcıya Ait!");
+				}
+				else if(data == 'PHONE')
+				{
+					alert("Telefon Numarası Başka Bir Kullanıcıya Ait!");
+				}
 				else if(data == 'OK')
 				{
-					alert("Kayıt Başarılı");
+					alert("Kayıt Başarılı, Lütfen Mail Adresinizi Doğrulayın");
 					$(location).attr('href','login');
 				}
 				

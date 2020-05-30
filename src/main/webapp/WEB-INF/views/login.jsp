@@ -66,7 +66,7 @@
 							</button>
 						</div>
 					</div>
-					${status}
+					<p style="text-align: center;">${status}</p>
 					<div class="text-center p-t-115">
 						<a href="register">Üye Ol</a>
 					</div>

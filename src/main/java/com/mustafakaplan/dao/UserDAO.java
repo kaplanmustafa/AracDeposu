@@ -29,10 +29,9 @@ public class UserDAO
 	
 	public Users getFindByEmailAndPass(String email, String pass)
 	{
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email AND password=:pass AND active=:active")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email AND password=:pass")
 				.setString("email", email)
-				.setString("pass", pass)
-				.setBoolean("active", true);
+				.setString("pass", pass);
 		
 		Users user = null;
 		
@@ -51,7 +50,30 @@ public class UserDAO
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE email=:email")
 				.setString("email", email);
 		
-		return (Users) query.getSingleResult();
+		try {
+			return (Users) query.getSingleResult();
+		}
+		catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		
+		return null;
+	}
+	
+	public Users getFindByPhone(String phone)
+	{
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE phone=:phone")
+				.setString("phone", phone);
+		
+		try {
+			return (Users) query.getSingleResult();
+		}
+		catch (Exception e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+		
+		return null;
 	}
 	
 	public ArrayList<Users>  getFindById(Long id)
@@ -61,6 +83,13 @@ public class UserDAO
 				.setLong("id", id);
 		
 		return (ArrayList<Users>) query.getResultList();
+	}
+	
+	public int getNumber()
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Users WHERE keyreg!='null'");
+		
+		return  query.getResultList().size();
 	}
 	
 	public Users getFindByKey(String key)

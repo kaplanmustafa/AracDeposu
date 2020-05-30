@@ -73,9 +73,24 @@ public class LoginController
 		
 		if(user2 != null)
 		{
-			request.getSession().setAttribute("user", user2);
-			
-			return new ResponseEntity<>("OK", HttpStatus.OK);
+			if(user2.getEmail().equals("aracdeposu@gmail.com"))
+			{
+				request.getSession().setAttribute("user", user2);
+				return new ResponseEntity<>("ADMIN", HttpStatus.OK);
+			}
+			else
+			{
+				if(user2.isActive())
+				{
+					request.getSession().setAttribute("user", user2);
+					return new ResponseEntity<>("OK", HttpStatus.OK);
+				}
+				else
+				{
+					return new ResponseEntity<>("NOTACTIVE", HttpStatus.OK);
+				}
+				
+			}
 		}
 		
 		return new ResponseEntity<>("ERROR", HttpStatus.OK);
@@ -89,6 +104,20 @@ public class LoginController
 		if(status != 0)
 		{
 			return new ResponseEntity<>(status+"", HttpStatus.OK);
+		}
+		
+		Users user2 = userService.getFindByEmail(user.getEmail());
+		
+		if(user2 != null)
+		{
+			return new ResponseEntity<>("MAIL", HttpStatus.CREATED);
+		}
+		
+		Users user3 = userService.getFindByPhone(user.getPhone());
+		
+		if(user3 != null)
+		{
+			return new ResponseEntity<>("PHONE", HttpStatus.CREATED);
 		}
 		
 		if(userService.insert(user).equals(1l))
