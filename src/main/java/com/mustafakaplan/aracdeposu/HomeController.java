@@ -41,6 +41,42 @@ public class HomeController
 		return new ResponseEntity<>(advertisementService.getActiveAllForIndex(), HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/getFilters", method = RequestMethod.POST)
+	public ResponseEntity<ArrayList<Advertisements>> getFilters(HttpServletRequest request)
+	{
+		if(!request.getParameter("vehicle").equals("") && !request.getParameter("brand").equals("") && !request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters(request.getParameter("vehicle"),request.getParameter("brand"),request.getParameter("model"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(request.getParameter("vehicle").equals("") && !request.getParameter("brand").equals("") && !request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters(request.getParameter("brand"),request.getParameter("model"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(!request.getParameter("vehicle").equals("") && request.getParameter("brand").equals("") && !request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters2(request.getParameter("vehicle"),request.getParameter("model"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(!request.getParameter("vehicle").equals("") && !request.getParameter("brand").equals("") && request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters3(request.getParameter("vehicle"),request.getParameter("brand"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(!request.getParameter("vehicle").equals("") && request.getParameter("brand").equals("") && request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters(request.getParameter("vehicle"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(request.getParameter("vehicle").equals("") && !request.getParameter("brand").equals("") && request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters4(request.getParameter("brand"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		else if(request.getParameter("vehicle").equals("") && request.getParameter("brand").equals("") && !request.getParameter("model").equals(""))
+		{
+			return new ResponseEntity<>(advertisementService.getFilters5(request.getParameter("model"),Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		}
+		
+		return new ResponseEntity<>(advertisementService.getFilters(Integer.parseInt(request.getParameter("year")),Integer.parseInt(request.getParameter("km")),Integer.parseInt(request.getParameter("price"))), HttpStatus.CREATED);
+		
+	}
+	
 	@RequestMapping(value = "/getAd", method = RequestMethod.POST)
 	public ResponseEntity<Advertisements> getAd(@RequestBody String id, HttpServletRequest request)
 	{

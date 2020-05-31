@@ -72,380 +72,114 @@
       </div>
     </section>
 
+<section style="margin-bottom: -50px;" class="ftco-section ftco-no-pb ftco-no-pt">
+    	<div class="container">
+	    	<div class="row">
+					<div class="col-md-12">
+						<div class="search-wrap-1 ftco-animate mb-5">
+							<form action="#" class="search-property-1">
+		        		<div class="row">
+							<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Araç</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="vehicle" class="form-control" onchange="getBrand()">
+		                      	<option value="">Araç Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+							</div>
+							<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Marka</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="brand" class="form-control" onchange="getModel()">
+		                      	<option value="">Marka Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Model</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="model" class="form-control">
+		                      	<option value="">Model Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Min Yıl</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="year" class="form-control">
+								<option value="">Min Yıl Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+							</div>
+							<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Max Km</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="km" class="form-control">
+		                      	<option value="">Km Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+							</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="#">Max Fiyat</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                      <select name="" id="price" class="form-control">
+		                      	<option value="">Fiyat Seç</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-self-end">
+		        				<div class="form-group">
+		        					<div class="form-field">
+				                <input type="button" value="Ara" onclick="filters()" class="form-control btn btn-primary">
+				              </div>
+			              </div>
+		        			</div>
+		        		</div>
+		        	</form>
+		        </div>
+					</div>
+	    	</div>
+	    </div>
+    </section>
+
+
+
 <!-- Cars -->
   
 <div class="site-section">
 
 	<div class="container">
-	  <div class="row">
-
-		<div class="col-lg-4 col-md-6 mb-4">
-		  <div class="item-1 ">
-			  <a href="car-single.html"><img src="asset/home/cars/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-			  <div class="item-1-contents bg-light">
-				<div class="text-center">
-				<h3><a href="car-single">Range Rover S64 Coupe</a></h3>
-				<div class="rating">
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				</div>
-				<div class="rent-price"><span>₺250000</span></div>
-				</div>
-				<ul class="specs">
-				  <li>
-					<span>Yıl</span>
-					<span class="spec">2020</span>
-				  </li>
-				  <li>
-					<span>Km</span>
-					<span class="spec">115000</span>
-				  </li>
-				  <li>
-					<span>Yakıt</span>
-					<span class="spec">Benzin</span>
-				  </li>
-				  <li>
-					<span>Vites</span>
-					<span class="spec">Otomatik</span>
-				  </li>
-				</ul>
-				<div class="d-flex action">
-				  <a href="car-single" class="btn btn-primary">İncele</a>
-				</div>
-			  </div>
-			</div>
-		</div>
-
-		<div class="col-lg-4 col-md-6 mb-4">
-		  <div class="item-1 ">
-			  <a href="#"><img src="asset/home/cars/images/img_2.jpg" alt="Image" class="img-fluid"></a>
-			  <div class="item-1-contents bg-light">
-				<div class="text-center">
-				<h3><a href="#">Range Rover S64 Coupe</a></h3>
-				<div class="rating">
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				  <span class="icon-star text-warning"></span>
-				</div>
-				<div class="rent-price"><span>₺250000</span></div>
-				</div>
-				<ul class="specs">
-				  <li>
-					<span>Yıl</span>
-					<span class="spec">2020</span>
-				  </li>
-				  <li>
-					<span>Km</span>
-					<span class="spec">115000</span>
-				  </li>
-				  <li>
-					<span>Yakıt</span>
-					<span class="spec">Benzin</span>
-				  </li>
-				  <li>
-					<span>Vites</span>
-					<span class="spec">Otomatik</span>
-				  </li>
-				</ul>
-				<div class="d-flex action">
-				  <a href="#" class="btn btn-primary">İncele</a>
-				</div>
-			  </div>
-			</div>
-		</div>
-
-
-		<div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_3.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_4.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_2.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_4.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_4.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="col-lg-4 col-md-6 mb-4">
-			<div class="item-1 ">
-				<a href="#"><img src="asset/home/cars/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-				<div class="item-1-contents bg-light">
-				  <div class="text-center">
-				  <h3><a href="#">Range Rover S64 Coupe</a></h3>
-				  <div class="rating">
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-					<span class="icon-star text-warning"></span>
-				  </div>
-				  <div class="rent-price"><span>₺250000</span></div>
-				  </div>
-				  <ul class="specs">
-					<li>
-					  <span>Yıl</span>
-					  <span class="spec">2020</span>
-					</li>
-					<li>
-					  <span>Km</span>
-					  <span class="spec">115000</span>
-					</li>
-					<li>
-					  <span>Yakıt</span>
-					  <span class="spec">Benzin</span>
-					</li>
-					<li>
-					  <span>Vites</span>
-					  <span class="spec">Otomatik</span>
-					</li>
-				  </ul>
-				  <div class="d-flex action">
-					<a href="#" class="btn btn-primary">İncele</a>
-				  </div>
-				</div>
-			  </div>
-		  </div>
-
-		  <div class="row mt-5">
-			<div class="col text-center">
-			  <div class="block-27">
-				<ul>
-				  <li><a href="#">&lt;</a></li>
-				  <li class="active"><span>1</span></li>
-				  <li><a href="#">2</a></li>
-				  <li><a href="#">3</a></li>
-				  <li><a href="#">4</a></li>
-				  <li><a href="#">5</a></li>
-				  <li><a href="#">&gt;</a></li>
-				</ul>
-			  </div>
-			</div>
-		  </div>
+	  <div class="row" id="list">
 
 		<div class="col-12">
 		</div>
@@ -530,6 +264,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="asset/home/js/google-map.js"></script>
   <script src="asset/home/js/main.js"></script>
+
+  <script src="asset/custom/car.js"></script>
 
   <!-- Cars -->
 

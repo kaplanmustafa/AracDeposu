@@ -103,4 +103,96 @@ public class AdvertisementDAO
 		
 		return (Advertisements) query.getSingleResult();
 	}
+	
+	public ArrayList<Advertisements> getFilters(String vehicle, String brand, String model, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle=:vehicle AND brand=:brand AND model=:model AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("vehicle", vehicle)
+				.setString("brand", brand)
+				.setString("model", model)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters(String brand, String model, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE brand=:brand AND model=:model AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("brand", brand)
+				.setString("model", model)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters2(String vehicle, String model, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle=:vehicle AND model=:model AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("vehicle", vehicle)
+				.setString("model", model)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters3(String vehicle, String brand, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle=:vehicle AND brand=:brand AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("vehicle", vehicle)
+				.setString("brand", brand)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters(String vehicle, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle=:vehicle AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("vehicle", vehicle)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters4(String brand, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE brand=:brand AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("brand", brand)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters5(String model, int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE model=:model AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setString("model", model)
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
+	
+	public ArrayList<Advertisements> getFilters(int year, int km, int price)
+	{
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+				.setInteger("year", year)
+				.setInteger("km", km)
+				.setInteger("price", price);
+		
+		return (ArrayList<Advertisements>) query.getResultList();
+	}
 }
