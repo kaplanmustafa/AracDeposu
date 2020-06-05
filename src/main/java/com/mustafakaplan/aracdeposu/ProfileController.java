@@ -199,6 +199,21 @@ public class ProfileController
 		return new ResponseEntity<>("OK", HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value = "/updateAd", method = RequestMethod.POST)
+	public ResponseEntity<String> updateAd(@RequestBody Advertisements ad, HttpServletRequest request)
+	{
+		Advertisements oldAd = advertisementService.getFindByAdId(ad.getAd_id());
+		ad.setVehicle(oldAd.getVehicle());
+		ad.setBrand(oldAd.getBrand());
+		ad.setModel(oldAd.getModel());
+		ad.setType(oldAd.getType());
+		ad.setUser_id(oldAd.getUser_id());
+		
+		advertisementService.updateAd(ad);
+		
+		return new ResponseEntity<>("OK", HttpStatus.CREATED);
+	}
+	
 	@RequestMapping(value = "/error_404", method = RequestMethod.GET)
 	public String error(Model model)
 	{
@@ -209,5 +224,11 @@ public class ProfileController
 	public ResponseEntity<ArrayList<Advertisements>> getCarsProfile(HttpServletRequest request)
 	{ 
 		return new ResponseEntity<>(advertisementService.getAllByUserId(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/getAdByAdId", method = RequestMethod.POST)
+	public ResponseEntity<Advertisements> getAd(HttpServletRequest request)
+	{
+		return new ResponseEntity<>(advertisementService.getFindByAdId(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
 	}
 }

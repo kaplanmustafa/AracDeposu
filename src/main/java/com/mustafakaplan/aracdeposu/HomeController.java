@@ -84,6 +84,7 @@ public class HomeController
 		return new ResponseEntity<>(advertisementService.getFindByAdId(Long.parseLong(id)), HttpStatus.CREATED);
 	}
 	
+	
 	@RequestMapping(value = "/car-single/{id}", method = RequestMethod.GET)
 	public String mustafa(@PathVariable("id") Long id,Model model, HttpServletRequest request) 
 	{

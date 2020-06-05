@@ -38,6 +38,7 @@
   </head>
   <body>
     <input type="text" hidden style="display: none" value="${user.id}" id="id" />
+    <input type="text" hidden style="display: none" value="" id="ad_id" />
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index">Araç<span> Deposu</span></a>
@@ -106,7 +107,10 @@
 							      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">İlan Ver</a>
 							    </li>
 							    <li class="nav-item">
-							      <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">İlanlarım</a>
+							      <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Yayındaki İlanlarım</a>
+							    </li>
+							    <li class="nav-item">
+							      <a class="nav-link" id="pills-manufacturer-tab2" data-toggle="pill" href="#pills-manufacturer2" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Yayında Olmayan İlanlarım</a>
 							    </li>
 							  </ul>
 							</div>
@@ -117,7 +121,6 @@
         
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
-          	<h2 class="text-center">Ücretsiz İlan Ver</h2>
           	
             <form id="upload-file-form" class="bg-light p-5 contact-form">
 	            <div class="form-group">
@@ -212,7 +215,8 @@
                 <textarea name="" id="des" cols="30" rows="7" class="form-control" placeholder="Açıklama"></textarea>
               </div>
               <div class="form-group">
-               <input type="button" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
+               <input type="button" id="upload" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
+               <input type="button" id="edit" style="display: none;" onclick="updateAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
               </div>
             </form>
           
@@ -225,19 +229,8 @@
   
 		  <div class="site-section">
 	
-			<section style="margin-top: -150px; margin-bottom -50px" class="ftco-section">
-				<div class="container-fluid px-4">
-					<div class="row justify-content-center">
-				  <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-					  <span class="subheading">İLANLAR</span>
-					<h2 class="mb-2">Tüm İlanlarım</h2>
-				  </div>
-				  	</div>
-				</div>
-			</section>
-	
 			<div class="container">
-			  <div class="row" id="ads">
+			  <div class="row" id="active-ads">
 	
 	  
 				<div class="col-12">
@@ -249,6 +242,26 @@
 	
 	<!-- Cars -->
 	    </div>
+   
+    <div class="tab-pane fade" id="pills-manufacturer2" role="tabpanel" aria-labelledby="pills-manufacturer-tab2">
+	      <!-- Cars -->
+  
+		  <div class="site-section">
+		
+			<div class="container">
+			  <div class="row" id="waiting-ads">
+	
+	  
+				<div class="col-12">
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+	
+	<!-- Cars -->
+	    </div>
+   
    
 	   </div>
 	  </div>

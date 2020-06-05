@@ -439,13 +439,16 @@ function getCars(){
 		data: {'id': $("#id").val()+""},
 		success: function(data) {
 			let list = "";
+			let list1 = "";
+			let list2 = "";
 			let count = 0;
 			let ad_count = 0;
+			
+			let addWaiting ="";
+			let addActive="";
+			
 			$(data).each(function(i,val){
 				ad_count++;
-				let active = "Yayında";
-				if(val.active == "0")
-					active = "Onay Bekliyor";
 				
 				let cons = "";
 				
@@ -460,7 +463,24 @@ function getCars(){
 					cons += '<span class="icon-star text-warning"></span>';
 				}
 				
-				list = list  
+				addActive="";
+				addWaiting ="";
+				if(val.active == "0")
+				{
+					addWaiting = '<a style="color: white;" class="btn btn-primary">Onay Bekliyor</a>';
+				}
+				else if(val.active == "-1")
+				{
+					addWaiting = '<a style="color: white;" class="btn btn-danger">Onaylanmadı</a>';
+				}
+				else
+				{
+					addActive = '<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="notPublishAd(id)" class="btn btn-danger">Yayından Kaldır</a>'
+								  +'<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="editAd(id)" class="btn btn-info">Düzenle</a>';
+				}
+				
+				list="";
+				list = list 
 				+'<div class="col-lg-4 col-md-6 mb-4">'
 				+'<div class="item-1 ">'
 				+'  <a href="car-single/'+val.ad_id+'"><img src="'+val.pp+'" alt="'+val.brand+' '+val.model+'" class="img-fluid"></a>'
@@ -491,17 +511,292 @@ function getCars(){
 				+'  </li>'
 				+'</ul>'
 				+'<div class="d-flex action">'
-				+'  <a style="margin-right: 10px;" href="car-single/'+val.ad_id+'" class="btn btn-primary">İncele</a>'
-				+'	<div  class="btn btn-primary">'+active+'</div>'
+				+ addActive
+				+ addWaiting
 				+'</div>'
 				+'  </div>'
 				+'</div>'
 				+'</div>';
+				
+				if(val.active == "0" || val.active == "-1")
+				{
+					list2 += list;
+				}
+				else
+				{
+					list1 += list;
+				}
 			});
-			$("#ads").html(list);
+			$("#active-ads").html(list1);
+			$("#waiting-ads").html(list2);
 			$("#count").html('<span>İlan Sayısı:</span>' + ad_count);
 		},error: function(data) {
 			alert(data);
 		}
 	});
+}
+
+function notPublishAd(id)
+{
+	$.ajax({
+		type:"POST",
+		url:"notPublishAd",
+		data: {'id': id+""},
+		success: function(data) {
+			if(data == 'OK')
+			{
+				alert("İlan Yayından Kaldırıldı");
+				getCars();
+			}
+		},error:  {
+			
+		}
+	});
+}
+
+function editAd(id)
+{	
+	document.getElementById("pills-description-tab").click();
+	document.getElementById("upload").style.display = "none";
+	document.getElementById("edit").style.display = "block";
+	
+	$.ajax({
+		type:"POST",
+		url:"getAdByAdId",
+		data: {'id': id+""},
+		success: function(data) {
+			$(data).each(function(i,val){
+				$('#ad_id').attr('value', val.ad_id);
+				$('#profile-img-tag').attr('src', val.pp);
+				
+				if(val.img1 != null)
+					$('#img1-tag').attr('src', val.img1);
+				if(val.img2 != null)
+					$('#img2-tag').attr('src', val.img2);
+				if(val.img3 != null)
+					$('#img3-tag').attr('src', val.img3);	
+				if(val.img4 != null)
+					$('#img4-tag').attr('src', val.img4);
+				if(val.img5 != null)
+					$('#img5-tag').attr('src', val.img5);
+				
+				document.getElementById("vehicle").style.display = "none";
+				document.getElementById("brand").style.display = "none";
+				document.getElementById("model").style.display = "none";
+				document.getElementById("type").style.display = "none";
+				
+				document.getElementById("fuel").value = val.fuel;
+				document.getElementById("gear").value = val.gear;
+				document.getElementById("city").value = val.city;
+				
+				document.getElementById("year").value = val.year;
+				document.getElementById("km").value = val.km;
+				document.getElementById("con").value = val.con;
+				document.getElementById("price").value = val.price;
+				document.getElementById("des").value = val.description;
+				
+				if(val.abc == "1")
+				{
+					document.getElementById("prp1").checked = true;
+				}
+				if(val.airbag == "1")
+				{
+					document.getElementById("prp3").checked = true;
+				}
+				if(val.immobilizer == "1")
+				{
+					document.getElementById("prp5").checked = true;
+				}
+				if(val.hill == "1")
+				{
+					document.getElementById("prp7").checked = true;
+				}
+				if(val.lane == "1")
+				{
+					document.getElementById("prp9").checked = true;
+				}
+				if(val.cd == "1")
+				{
+					document.getElementById("prp11").checked = true;
+				}
+				if(val.bluetooth == "1")
+				{
+					document.getElementById("prp13").checked = true;
+				}
+				if(val.navigation == "1")
+				{
+					document.getElementById("prp15").checked = true;
+				}
+				if(val.tv == "1")
+				{
+					document.getElementById("prp2").checked = true;
+				}
+				if(val.entertainment == "1")
+				{
+					document.getElementById("prp4").checked = true;
+				}
+				if(val.ac == "1")
+				{
+					document.getElementById("prp6").checked = true;
+				}
+				if(val.cruise == "1")
+				{
+					document.getElementById("prp8").checked = true;
+				}
+				if(val.camera == "1")
+				{
+					document.getElementById("prp10").checked = true;
+				}
+				if(val.color == "1")
+				{
+					document.getElementById("prp12").checked = true;
+				}
+				if(val.changing == "1")
+				{
+					document.getElementById("prp14").checked = true;
+				}
+				
+			});
+		},error: {
+			
+		}
+	});
+}
+
+function updateAd()
+{
+	let fuel = document.getElementById('fuel').selectedIndex;
+	let gear = document.getElementById('gear').selectedIndex;
+	let con = document.getElementById('con').selectedIndex;
+	let city = document.getElementById('city').selectedIndex;
+	let year = document.getElementById('year').value;
+	let km = document.getElementById('km').value;
+	let price = document.getElementById('price').value;
+	
+	if(fuel == 0 || gear == 0 || con == 0 || city == 0 || year.length <4 || km.length == 0 || price.length == 0)
+	{
+		alert("Lütfen Gerekli Alanları Doldurunuz!");
+	}
+	else if(year < 1900 || year > 2020)
+	{
+		alert("Lütfen 1900 veya Sonrası Bir Yıl Giriniz (Max : 2020)");
+	}
+	else if(document.getElementById("profile-img-tag").src == "http://localhost:8085/aracdeposu/asset/home/images/add_pp.png")
+	{
+		alert("Lütfen Vitrin Fotoğrafı Seçiniz!")
+	}
+	else
+	{
+		let prp1=0,prp2=0,prp3=0,prp4=0,prp5=0,prp6=0,prp7=0,prp8=0,prp9=0,prp10=0,prp11=0,prp12=0,prp13=0,prp14=0,prp15=0;
+		
+		let formData = new FormData();
+		formData.append('section', 'general');
+		formData.append('action', 'previewImg');
+		
+		formData.append('files', $('#profile-img')[0].files[0]);
+		
+		for(let i=1; i<6; i++)
+		{
+			if(document.getElementById("img"+i).value != "") 
+			{
+				formData.append('files', $('#img'+i)[0].files[0]);
+			}
+		}
+		
+		if(document.getElementById("prp1").checked)
+			prp1 = 1;
+		if(document.getElementById("prp2").checked)
+			prp2 = 1;
+		if(document.getElementById("prp3").checked)
+			prp3 = 1;
+		if(document.getElementById("prp4").checked)
+			prp4 = 1;
+		if(document.getElementById("prp5").checked)
+			prp5 = 1;
+		if(document.getElementById("prp6").checked)
+			prp6 = 1;
+		if(document.getElementById("prp7").checked)
+			prp7 = 1;
+		if(document.getElementById("prp8").checked)
+			prp8 = 1;
+		if(document.getElementById("prp9").checked)
+			prp9 = 1;
+		if(document.getElementById("prp10").checked)
+			prp10 = 1;
+		if(document.getElementById("prp11").checked)
+			prp11 = 1;
+		if(document.getElementById("prp12").checked)
+			prp12 = 1;
+		if(document.getElementById("prp13").checked)
+			prp13 = 1;
+		if(document.getElementById("prp14").checked)
+			prp14 = 1;
+		if(document.getElementById("prp15").checked)
+			prp15 = 1;
+		
+		let param ={
+				ad_id: document.getElementById("ad_id").value,
+				fuel: $("#fuel").val(),
+				gear: $("#gear").val(),
+				con: $("#con").val(),
+				city: $("#city").val(),
+				year: $("#year").val(),
+				km: $("#km").val(),
+				price: $("#price").val(),
+				description: $("#des").val(),
+				abc: prp1,
+				tv: prp2,
+				airbag: prp3,
+				entertainment: prp4,
+				immobilizer: prp5,
+				ac: prp6,
+				hill: prp7,
+				cruise: prp8,
+				lane: prp9,
+				camera: prp10,
+				cd: prp11,
+				color: prp12,
+				bluetooth: prp13,
+				changing: prp14,
+				navigation: prp15
+		}
+		
+		let ser_data = JSON.stringify(param);
+		
+		$.ajax({
+			type:"POST",
+			contentType:'application/json; charset=UTF-8',
+			url:"updateAd",
+			data:ser_data,
+			success:  {
+				
+			},error:  {
+				
+			}
+		});
+		/*
+		$.ajax({
+			type:"POST",
+			url:"uploadImage",
+			data: formData,
+			enctype: "multipart/form-data",
+			processData: false,
+		    contentType: false,
+		    cache: false,
+			success: function(data) {
+				if(data == 'OK')
+				{
+					alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
+					location.reload();
+				}
+				else if(data == 'ERROR')
+				{
+					alert("Lütfen Tekrar Deneyiniz!");
+					location.reload();
+				}
+			},error:  function(data){
+				
+			}
+		});*/
+	}
 }
