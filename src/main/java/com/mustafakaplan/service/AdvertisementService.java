@@ -19,7 +19,7 @@ public class AdvertisementService
 	@Autowired
 	private AdvertisementDAO advertisementDAO;
 	
-	public long createAd(Advertisements ad, HttpServletRequest request)
+	public long createAd(Advertisements ad)
 	{
 		ad.setUser_id(LoginFilter.user.getId());
 		ad.setActive(0);
@@ -58,39 +58,9 @@ public class AdvertisementService
 		return advertisementDAO.getFilters(vehicle, brand, model, year, km, price);
 	}
 	
-	public ArrayList<Advertisements> getFilters(String brand, String model, int year, int km, int price)
+	public ArrayList<Advertisements> getActiveAllForIndex(Long id, String brand, String model)
 	{
-		return advertisementDAO.getFilters(brand, model, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters2(String vehicle, String model, int year, int km, int price)
-	{
-		return advertisementDAO.getFilters2(vehicle, model, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters3(String vehicle,String brand, int year, int km, int price)
-	{
-		return advertisementDAO.getFilters3(vehicle, brand, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters(String vehicle, int year, int km, int price)
-	{
-		return advertisementDAO.getFilters(vehicle, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters4(String brand, int year, int km, int price)
-	{
-		return advertisementDAO.getFilters4(brand, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters5(String model, int year, int km, int price)
-	{
-		return advertisementDAO.getFilters5(model, year, km, price);
-	}
-	
-	public ArrayList<Advertisements> getFilters(int year, int km, int price)
-	{
-		return advertisementDAO.getFilters(year, km, price);
+		return advertisementDAO.getActiveAllForIndex(id, brand, model);
 	}
 	
 	public ArrayList<Advertisements> getActiveAllForIndex()

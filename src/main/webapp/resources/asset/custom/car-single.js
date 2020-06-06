@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	getAd();
-	getCars();
-	//getUser();
 });
 
 function getAd(){
@@ -25,8 +23,12 @@ function getAd(){
 				if(val.img5 != null)
 					images += '<div class="img" style="background-image: url(./../'+val.img5+'); height:350px;"></div>';
 							 
-				let brand = val.brand;
-				let model = val.model;
+				
+				images += '<div class="text text-center">'
+					+'<span class="subheading" id="brand">'+val.brand+'</span>'
+					+'<h2 id="model">'+val.model+'</h2>'
+					+'</div>';
+				
 				let km = val.km;
 				let gear = val.gear;
 				let type = val.type;
@@ -111,8 +113,6 @@ function getAd(){
 				}
 				
 				$("#images").html(images);
-				$("#brand").html(brand);
-				$("#model").html(model);
 				$("#km").html(km);
 				$("#gear").html(gear);
 				$("#type").html(type);
@@ -127,6 +127,8 @@ function getAd(){
 				document.getElementById("user_id").value = val.user_id;
 				
 				getUser();
+				
+				getCars();
 			});
 			
 		},error: function(data) {
@@ -139,9 +141,9 @@ function getCars(){
 	$.ajax({
 		type:"POST",
 		url:"./../getCars",
+		data: {'id': $("#id").val(), 'brand': document.getElementById('brand').innerHTML, 'model': document.getElementById('model').innerHTML},
 		success: function(data) {
 			let list = "";
-			let count = 0;
 			$(data).each(function(i,val){
 				let cons = "";
 				
@@ -195,7 +197,7 @@ function getCars(){
 			});
 			$("#list").html(list);
 		},error: function(data) {
-			alert(data);
+			
 		}
 	});
 }

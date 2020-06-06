@@ -5,7 +5,7 @@ $(document).ready(function(){
 function getCars(){
 	$.ajax({
 		type:"POST",
-		url:"getCars",
+		url:"getCars2",
 		success: function(data) {
 			let list = "";
 			let count = 0;

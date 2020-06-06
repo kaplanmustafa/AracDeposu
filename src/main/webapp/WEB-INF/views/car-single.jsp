@@ -76,14 +76,11 @@
 				<div class="col-md-12" style=" max-width: 50%; flex: 0 0 50%;">
 				<div class="car-details" id="images">
 					
-				<div class="text text-center">
-					<span class="subheading" id="brand"></span>
-					<h2 id="model"></h2>
+				
 				</div>
 				</div>
 				</div>
-				</div>
-				<div class="row">'
+				<div class="row">
 				<div class="col-md d-flex align-self-stretch ftco-animate">
 				<div class="media block-6 services">
 				<div class="media-body py-md-4">

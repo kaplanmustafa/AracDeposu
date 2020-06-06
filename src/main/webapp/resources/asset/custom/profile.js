@@ -399,36 +399,36 @@ function uploadAd()
 			contentType:'application/json; charset=UTF-8',
 			url:"addAd",
 			data:ser_data,
-			success:  {
-				
+			success: function(data) {
+				$.ajax({
+					type:"POST",
+					url:"uploadImage",
+					data: formData,
+					enctype: "multipart/form-data",
+					processData: false,
+				    contentType: false,
+				    cache: false,
+					success: function(data) {
+						if(data == 'OK')
+						{
+							alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
+							location.reload();
+						}
+						else if(data == 'ERROR')
+						{
+							alert("Lütfen Tekrar Deneyiniz!");
+							location.reload();
+						}
+					},error:  function(data){
+						
+					}
+				});
 			},error:  {
 				
 			}
 		});
 		
-		$.ajax({
-			type:"POST",
-			url:"uploadImage",
-			data: formData,
-			enctype: "multipart/form-data",
-			processData: false,
-		    contentType: false,
-		    cache: false,
-			success: function(data) {
-				if(data == 'OK')
-				{
-					alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
-					location.reload();
-				}
-				else if(data == 'ERROR')
-				{
-					alert("Lütfen Tekrar Deneyiniz!");
-					location.reload();
-				}
-			},error:  function(data){
-				
-			}
-		});
+		
 	}
 }
 
@@ -554,11 +554,42 @@ function notPublishAd(id)
 	});
 }
 
+function hideImg()
+{
+	document.getElementById("showImages").style.display = "block";
+	document.getElementById("profile-img-tag").style.display = "none";
+	document.getElementById("img1-tag").style.display = "none";
+	document.getElementById("img2-tag").style.display = "none";
+	document.getElementById("img3-tag").style.display = "none";
+	document.getElementById("img4-tag").style.display = "none";
+	document.getElementById("img5-tag").style.display = "none";
+	document.getElementById("hideImages").style.display = "none";
+}
+
+function showImg()
+{
+	document.getElementById("showImages").style.display = "none";
+	document.getElementById("profile-img-tag").style.display = "";
+	document.getElementById("img1-tag").style.display = "";
+	document.getElementById("img2-tag").style.display = "";
+	document.getElementById("img3-tag").style.display = "";
+	document.getElementById("img4-tag").style.display = "";
+	document.getElementById("img5-tag").style.display = "";
+	document.getElementById("hideImages").style.display = "block";
+}
+
 function editAd(id)
 {	
 	document.getElementById("pills-description-tab").click();
 	document.getElementById("upload").style.display = "none";
 	document.getElementById("edit").style.display = "block";
+	document.getElementById("showImages").style.display = "block";
+	document.getElementById("profile-img-tag").style.display = "none";
+	document.getElementById("img1-tag").style.display = "none";
+	document.getElementById("img2-tag").style.display = "none";
+	document.getElementById("img3-tag").style.display = "none";
+	document.getElementById("img4-tag").style.display = "none";
+	document.getElementById("img5-tag").style.display = "none";
 	
 	$.ajax({
 		type:"POST",
@@ -567,18 +598,6 @@ function editAd(id)
 		success: function(data) {
 			$(data).each(function(i,val){
 				$('#ad_id').attr('value', val.ad_id);
-				$('#profile-img-tag').attr('src', val.pp);
-				
-				if(val.img1 != null)
-					$('#img1-tag').attr('src', val.img1);
-				if(val.img2 != null)
-					$('#img2-tag').attr('src', val.img2);
-				if(val.img3 != null)
-					$('#img3-tag').attr('src', val.img3);	
-				if(val.img4 != null)
-					$('#img4-tag').attr('src', val.img4);
-				if(val.img5 != null)
-					$('#img5-tag').attr('src', val.img5);
 				
 				document.getElementById("vehicle").style.display = "none";
 				document.getElementById("brand").style.display = "none";
@@ -681,7 +700,7 @@ function updateAd()
 	{
 		alert("Lütfen 1900 veya Sonrası Bir Yıl Giriniz (Max : 2020)");
 	}
-	else if(document.getElementById("profile-img-tag").src == "http://localhost:8085/aracdeposu/asset/home/images/add_pp.png")
+	else if(document.getElementById("showImages").style.display == "none" && document.getElementById("profile-img").value == "")
 	{
 		alert("Lütfen Vitrin Fotoğrafı Seçiniz!")
 	}
@@ -734,9 +753,17 @@ function updateAd()
 		if(document.getElementById("prp15").checked)
 			prp15 = 1;
 		
+		let active;
+		
+		if(document.getElementById("showImages").style.display == "none")
+		{
+			active= -5;
+		}
+		
 		let param ={
 				ad_id: document.getElementById("ad_id").value,
 				fuel: $("#fuel").val(),
+				active: active,
 				gear: $("#gear").val(),
 				con: $("#con").val(),
 				city: $("#city").val(),
@@ -774,29 +801,34 @@ function updateAd()
 				
 			}
 		});
-		/*
-		$.ajax({
-			type:"POST",
-			url:"uploadImage",
-			data: formData,
-			enctype: "multipart/form-data",
-			processData: false,
-		    contentType: false,
-		    cache: false,
-			success: function(data) {
-				if(data == 'OK')
-				{
-					alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
-					location.reload();
+		
+		if(document.getElementById("showImages").style.display == "none")
+		{	
+			$.ajax({
+				type:"POST",
+				url:"uploadImage",
+				data: formData,
+				enctype: "multipart/form-data",
+				processData: false,
+			    contentType: false,
+			    cache: false,
+				success: function(data) {
+					if(data == 'OK')
+					{
+						
+					}
+					else if(data == 'ERROR')
+					{
+						alert("Lütfen Tekrar Deneyiniz!");
+						location.reload();
+					}
+				},error:  function(data){
+					
 				}
-				else if(data == 'ERROR')
-				{
-					alert("Lütfen Tekrar Deneyiniz!");
-					location.reload();
-				}
-			},error:  function(data){
-				
-			}
-		});*/
+			});
+		}
+		
+		alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
+		location.reload();
 	}
 }

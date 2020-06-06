@@ -3,11 +3,13 @@ package com.mustafakaplan.aracdeposu;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +42,7 @@ import com.mustafakaplan.service.VehicleService;
 public class ProfileController 
 {
 	public static String url = "http://localhost:8085/aracdeposu";
+	Long ad_id;
 	
 	@Autowired
 	private VehicleService vehicleService;
@@ -90,7 +93,6 @@ public class ProfileController
 	@RequestMapping(value = "/getAdUser", method = RequestMethod.POST)
 	public ResponseEntity<ArrayList<Users>> getAdUser(HttpServletRequest request)
 	{
-		System.out.println("****************" + request.getParameter("id"));
 		return new ResponseEntity<>(userService.getFindById(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
 	}
 	
@@ -121,8 +123,7 @@ public class ProfileController
 	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
 	public ResponseEntity<String> uploadImage(@RequestParam("files") MultipartFile[] files,HttpSession session)
 	{   
-		Advertisements oldAd = advertisementService.getLastAd();
-		int adId = (int) oldAd.getAd_id();
+		Advertisements oldAd = advertisementService.getFindByAdId(ad_id);
 		
 		if(files.length == 0)
 		{
@@ -131,15 +132,19 @@ public class ProfileController
 		
 		String path= "C:\\Users\\m06ka\\Desktop\\MASAUSTU\\spring-tool-suite-3.9.12.CI-B1344-e4.15.0-win32-x86_64\\sts-bundle\\sts-3.9.12.CI-B1344\\projects\\AracDeposu\\src\\main\\webapp\\resources\\asset\\ad_images\\";  
 		
-		File dir = new File(path + adId);
+		File dir = new File(path + ad_id);
 		if (!dir.exists())
 		{
 			dir.mkdirs();
-			path += adId;
+			path += ad_id;
 		}
 		
 		String filename = "";
-		
+		oldAd.setImg1("");
+		oldAd.setImg2("");
+		oldAd.setImg3("");
+		oldAd.setImg4("");
+		oldAd.setImg5("");
 		
 		for(int i=0; i<files.length; i++)
 		{
@@ -148,7 +153,7 @@ public class ProfileController
 			if(i == 0)
 			{
 				filename = "pp" + "." + extension;
-				oldAd.setPp("asset/ad_images/" + adId + "/" + filename);
+				oldAd.setPp("asset/ad_images/" + ad_id + "/" + filename);
 			}
 			else
 			{
@@ -156,19 +161,19 @@ public class ProfileController
 				
 				if(i == 1)
 				{
-					oldAd.setImg1("asset/ad_images/" + adId + "/" + filename);
+					oldAd.setImg1("asset/ad_images/" + ad_id + "/" + filename);
 				}else if(i == 2)
 				{
-					oldAd.setImg2("asset/ad_images/" + adId + "/" + filename);
+					oldAd.setImg2("asset/ad_images/" + ad_id + "/" + filename);
 				}else if(i == 3)
 				{
-					oldAd.setImg3("asset/ad_images/" + adId + "/" + filename);
+					oldAd.setImg3("asset/ad_images/" + ad_id + "/" + filename);
 				}else if(i == 4)
 				{
-					oldAd.setImg4("asset/ad_images/" + adId + "/" + filename);
+					oldAd.setImg4("asset/ad_images/" + ad_id + "/" + filename);
 				}else if(i == 5)
 				{
-					oldAd.setImg5("asset/ad_images/" + adId + "/" + filename);
+					oldAd.setImg5("asset/ad_images/" + ad_id + "/" + filename);
 				}
 			}
 			
@@ -194,7 +199,8 @@ public class ProfileController
 	@RequestMapping(value = "/addAd", method = RequestMethod.POST)
 	public ResponseEntity<String> addAd(@RequestBody Advertisements ad, HttpServletRequest request)
 	{
-		advertisementService.createAd(ad, request);
+		advertisementService.createAd(ad);
+		ad_id = ad.getAd_id();
 		
 		return new ResponseEntity<>("OK", HttpStatus.CREATED);
 	}
@@ -203,13 +209,31 @@ public class ProfileController
 	public ResponseEntity<String> updateAd(@RequestBody Advertisements ad, HttpServletRequest request)
 	{
 		Advertisements oldAd = advertisementService.getFindByAdId(ad.getAd_id());
+		
+		ad_id = oldAd.getAd_id();
+		
+		if(ad.getActive() == -5)
+		{
+			deleteImageFolder();
+		}
+		
 		ad.setVehicle(oldAd.getVehicle());
 		ad.setBrand(oldAd.getBrand());
 		ad.setModel(oldAd.getModel());
 		ad.setType(oldAd.getType());
 		ad.setUser_id(oldAd.getUser_id());
+		ad.setActive(0);
+	
+		ad.setPp(oldAd.getPp());
+		ad.setImg1(oldAd.getImg1());
+		ad.setImg2(oldAd.getImg2());
+		ad.setImg3(oldAd.getImg3());
+		ad.setImg4(oldAd.getImg4());
+		ad.setImg5(oldAd.getImg5());
 		
 		advertisementService.updateAd(ad);
+		
+		
 		
 		return new ResponseEntity<>("OK", HttpStatus.CREATED);
 	}
@@ -230,5 +254,22 @@ public class ProfileController
 	public ResponseEntity<Advertisements> getAd(HttpServletRequest request)
 	{
 		return new ResponseEntity<>(advertisementService.getFindByAdId(Long.parseLong(request.getParameter("id"))), HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value = "/deleteImageFolder", method = RequestMethod.POST)
+	public void deleteImageFolder()
+	{
+		String oldImageFolder = String.valueOf(ad_id);
+		String path= "C:\\Users\\m06ka\\Desktop\\MASAUSTU\\spring-tool-suite-3.9.12.CI-B1344-e4.15.0-win32-x86_64\\sts-bundle\\sts-3.9.12.CI-B1344\\projects\\AracDeposu\\src\\main\\webapp\\resources\\asset\\ad_images\\";
+		path += oldImageFolder;
+		
+		File folder = new File(path);
+		
+		try {
+			FileUtils.deleteDirectory(folder);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

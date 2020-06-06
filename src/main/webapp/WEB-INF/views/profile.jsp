@@ -136,6 +136,8 @@
 					<img src="asset/home/images/add.png" id="img3-tag" width="194px" height="150px" /><tab></tab>
 					<img src="asset/home/images/add.png" id="img4-tag" width="194px" height="150px" /><tab></tab>
 					<img src="asset/home/images/add.png" id="img5-tag" width="194px" height="150px" />
+					<input type="button" id="showImages" style="display: none;" onclick="showImg()" value="Fotoğrafları Yeniden Yükle" class="btn btn-primary py-2 px-5" >
+					<input type="button" id="hideImages" style="display: none;" onclick="hideImg()" value="İptal" class="btn btn-danger py-2 px-5" >
 				</div>
               <div class="form-group">
 				<div class="icon"></div>
