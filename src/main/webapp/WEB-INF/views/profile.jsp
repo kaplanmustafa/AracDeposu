@@ -7,6 +7,11 @@
   <head>
     <title>Araç Deposu</title>
     <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="180x180" href="asset/css/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="asset/css/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="asset/css/favicon-16x16.png">
+	<link rel="manifest" href="asset/css/site.webmanifest">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
@@ -217,8 +222,8 @@
                 <textarea name="" id="des" cols="30" rows="7" class="form-control" placeholder="Açıklama"></textarea>
               </div>
               <div class="form-group">
-               <input type="button" id="upload" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
-               <input type="button" id="edit" style="display: none;" onclick="updateAd()" value="Onayla" class="btn btn-primary py-3 px-5" >
+               <input type="button" id="upload" onclick="uploadAd()" value="Onayla" class="btn btn-primary py-2 px-5" >
+               <input type="button" id="edit" style="display: none;" onclick="updateAd()" value="Kaydet" class="btn btn-primary py-2 px-5" >
               </div>
             </form>
           
@@ -290,11 +295,11 @@
 			  <div class="ftco-footer-widget mb-4 ml-md-5">
 				<h2 class="ftco-heading-2">Bilgi</h2>
 				<ul class="list-unstyled">
-				  <li><a href="#" class="py-2 d-block">About</a></li>
-				  <li><a href="#" class="py-2 d-block">Services</a></li>
-				  <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
-				  <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-				  <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+				  <li><a href="#" class="py-2 d-block">Hakkımızda</a></li>
+                <li><a href="#" class="py-2 d-block">Servisler</a></li>
+                <li><a href="#" class="py-2 d-block">Şartlar ve Koşullar</a></li>
+                <li><a href="#" class="py-2 d-block">En İyi Fiyat Garantisi</a></li>
+                <li><a href="#" class="py-2 d-block">Gizlilik &amp; Çerez Politikası</a></li>
 				</ul>
 			  </div>
 			</div>

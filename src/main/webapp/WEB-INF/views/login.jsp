@@ -3,13 +3,16 @@
 <%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<title>Giriş</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="asset/login/images/icons/favicon.ico"/>
+	<link rel="apple-touch-icon" sizes="180x180" href="asset/css/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="asset/css/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="asset/css/favicon-16x16.png">
+	<link rel="manifest" href="asset/css/site.webmanifest">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="asset/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

@@ -465,18 +465,18 @@ function getCars(){
 				
 				addActive="";
 				addWaiting ="";
-				if(val.active == "0")
+				
+				if(val.active == "0") //Onay Bekliyor
 				{
-					addWaiting = '<a style="color: white;" class="btn btn-primary">Onay Bekliyor</a>';
+					addWaiting = '<a style="margin-right: 10px; color: white;" class="btn btn-primary">Onay Bekliyor</a>';
 				}
-				else if(val.active == "-1")
+				else if(val.active == "-1") //Onaylanmadı
 				{
-					addWaiting = '<a style="color: white;" class="btn btn-danger">Onaylanmadı</a>';
+					addWaiting = '<a style="margin-right: 10px; color: white;" class="btn btn-danger">Onaylanmadı</a>';
 				}
-				else
+				else //Yayında
 				{
-					addActive = '<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="notPublishAd(id)" class="btn btn-danger">Yayından Kaldır</a>'
-								  +'<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="editAd(id)" class="btn btn-info">Düzenle</a>';
+					addActive = '<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="notPublishAd(id)" class="btn btn-danger">Yayından Kaldır</a>';
 				}
 				
 				list="";
@@ -513,6 +513,8 @@ function getCars(){
 				+'<div class="d-flex action">'
 				+ addActive
 				+ addWaiting
+				+'<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="editAd(id)" class="btn btn-info">Düzenle</a>'
+				+'  <a style="color: white;" id="'+val.ad_id+'" onclick="deleteAd(id)" class="btn btn-danger">Sil</a>'
 				+'</div>'
 				+'  </div>'
 				+'</div>'
@@ -531,7 +533,7 @@ function getCars(){
 			$("#waiting-ads").html(list2);
 			$("#count").html('<span>İlan Sayısı:</span>' + ad_count);
 		},error: function(data) {
-			alert(data);
+			
 		}
 	});
 }
@@ -831,4 +833,22 @@ function updateAd()
 		alert("İlanınız Onaylandıktan Sonra Yayınlanacaktır");
 		location.reload();
 	}
+}
+
+function deleteAd(id)
+{
+	$.ajax({
+		type:"POST",
+		url:"deleteAd",
+		data: {'id': id+""},
+		success: function(data) {
+			if(data == 'OK')
+			{
+				alert("İlan Silindi");
+				getCars();
+			}
+		},error:  {
+			
+		}
+	});
 }
