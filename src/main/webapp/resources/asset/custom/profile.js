@@ -476,7 +476,7 @@ function getCars(){
 				}
 				else //Yayında
 				{
-					addActive = '<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="notPublishAd(id)" class="btn btn-danger">Yayından Kaldır</a>';
+					addActive = '<a style="margin-right: 10px; color: white;" id="'+val.ad_id+'" onclick="denyAd(id)" class="btn btn-danger">Yayından Kaldır</a>';
 				}
 				
 				list="";
@@ -845,6 +845,24 @@ function deleteAd(id)
 			if(data == 'OK')
 			{
 				alert("İlan Silindi");
+				getCars();
+			}
+		},error:  {
+			
+		}
+	});
+}
+
+function denyAd(id)
+{
+	$.ajax({
+		type:"POST",
+		url:"denyAd",
+		data: {'id': id+""},
+		success: function(data) {
+			if(data == 'OK')
+			{
+				alert("İlan Yayından Kaldırıldı");
 				getCars();
 			}
 		},error:  {

@@ -66,7 +66,6 @@ public class AdvertisementDAO
 	public ArrayList<Advertisements> getActiveAllForIndex()
 	{
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE active=1 order by ad_id desc");
-			
 		query.setMaxResults(6);
 		return (ArrayList<Advertisements>) query.getResultList();
 	}
@@ -123,7 +122,6 @@ public class AdvertisementDAO
 		
 		if(!vehicle.equals("")) 
 		{
-			System.out.println(vehicle);
 			vehicle1 = "'" + vehicle + "'";
 		}
 		if(!brand.equals("")) 
@@ -135,7 +133,8 @@ public class AdvertisementDAO
 			model1 = "'" + model + "'";
 		}
 		
-		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle="+vehicle1+" AND brand="+brand1+" AND model="+model1+" AND year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
+		Query query = sessionFactory.getCurrentSession().createQuery("FROM Advertisements WHERE vehicle="+vehicle1+" AND brand="+brand1+" AND model="+model1+" AND "
+				+ "year>=:year AND km<=:km AND price<=:price AND active=1 order by ad_id desc")
 				.setInteger("year", year)
 				.setInteger("km", km)
 				.setInteger("price", price);
