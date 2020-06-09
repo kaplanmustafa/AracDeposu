@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mustafakaplan.dao.VehicleDAO;
-import com.mustafakaplan.dto.UserLoginDTO;
 import com.mustafakaplan.entity.Users;
 import com.mustafakaplan.entity.Vehicles;
 

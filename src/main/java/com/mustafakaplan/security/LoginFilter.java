@@ -22,10 +22,7 @@ public class LoginFilter implements Filter
 {
 	public static Users user = null;
 	
-	public void destroy() 
-	{
-		
-	}
+	public void destroy() {}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
 	{
@@ -38,7 +35,6 @@ public class LoginFilter implements Filter
 		// Giriþ yapýlmamýþsa ve profile týklanmýþsa
 		if(user == null && (req.getRequestURI().contains("profile") || req.getRequestURI().contains("admin"))) 
 		{
-			
 			res.sendRedirect(ProfileController.url + "/login");
 		}
 		else if(user != null)
@@ -47,7 +43,6 @@ public class LoginFilter implements Filter
 			{
 				res.sendRedirect(ProfileController.url + "/admin");
 			}
-			
 			else if(req.getRequestURI().contains("register") || req.getRequestURI().contains("login"))
 			{
 				res.sendRedirect(ProfileController.url + "/profile");
@@ -57,14 +52,10 @@ public class LoginFilter implements Filter
 			{
 				res.sendRedirect(ProfileController.url + "/profile");
 			}
-			
 		}
-		
 		chain.doFilter(request, response);
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException 
-	{
-		
-	}
+	public void init(FilterConfig fConfig) throws ServletException {}
+	
 }
